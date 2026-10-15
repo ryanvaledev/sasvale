@@ -1,0 +1,1408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sasvale — Interactive Portfolio Agency (Prototype)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --obsidian: #060608;
+      --charcoal: #0e0e12;
+      --charcoal-light: #16161c;
+      --alabaster: #f5f3ed;
+      --muted: #8e8b82;
+      --muted-dark: #5c5a54;
+      --gold: #d4af37;
+      --gold-hover: #e5be42;
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --border-gold: rgba(212, 175, 55, 0.35);
+      --font-display: 'Manrope', -apple-system, sans-serif;
+      --font-body: 'DM Sans', -apple-system, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--obsidian);
+      color: var(--alabaster);
+      font-family: var(--font-body);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 48px;
+    }
+
+    /* HEADER */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(6, 6, 8, 0.85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border-subtle);
+      transition: all 0.3s ease;
+    }
+    .header-inner {
+      height: 84px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .wordmark {
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--alabaster);
+      text-decoration: none;
+    }
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+    .nav-links a {
+      color: rgba(245, 243, 237, 0.7);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: color 0.2s ease;
+    }
+    .nav-links a:hover {
+      color: var(--gold);
+    }
+    .btn-gold {
+      background: var(--gold);
+      color: #060608;
+      font-family: var(--font-body);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 12px 24px;
+      border-radius: 6px;
+      text-decoration: none;
+      border: 1px solid var(--gold);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .btn-gold:hover {
+      background: var(--gold-hover);
+      border-color: var(--gold-hover);
+      transform: translateY(-1px);
+    }
+    .btn-secondary {
+      background: transparent;
+      color: var(--alabaster);
+      font-size: 13px;
+      font-weight: 500;
+      padding: 12px 22px;
+      border-radius: 6px;
+      border: 1px solid var(--border-subtle);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .btn-secondary:hover {
+      border-color: var(--border-gold);
+      color: var(--gold);
+    }
+
+    /* SECTION EYEBROW */
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+    .eyebrow .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--gold);
+    }
+    .eyebrow span {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    /* SECTION 1: INTERACTIVE PORTFOLIO HERO */
+    .hero-section {
+      padding: 90px 0 110px;
+      position: relative;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 64px;
+      align-items: center;
+    }
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: 58px;
+      font-weight: 600;
+      line-height: 1.08;
+      letter-spacing: -0.035em;
+      color: var(--alabaster);
+      margin-bottom: 24px;
+    }
+    .hero-lead {
+      font-size: 17px;
+      line-height: 1.75;
+      color: var(--muted);
+      max-width: 520px;
+      margin-bottom: 36px;
+    }
+    .hero-ctas {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 40px;
+    }
+    .hero-meta {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-size: 12px;
+      color: var(--muted-dark);
+      padding-top: 24px;
+      border-top: 1px solid var(--border-subtle);
+    }
+    .hero-meta strong {
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    /* HERO RIGHT: REAL PROJECT SHOWCASE VIEWPORT */
+    .showcase-viewport-container {
+      position: relative;
+    }
+    .showcase-stage {
+      background: #0b0b0f;
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.8);
+      position: relative;
+      aspect-ratio: 16 / 11;
+      display: flex;
+      flex-direction: column;
+    }
+    .project-slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1), transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+      transform: scale(0.98);
+      display: flex;
+      flex-direction: column;
+      background: #08080b;
+    }
+    .project-slide.active {
+      opacity: 1;
+      pointer-events: auto;
+      transform: scale(1);
+    }
+
+    /* Slide 1: Ethletia Real Storefront UI */
+    .slide-ethletia {
+      padding: 32px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: radial-gradient(circle at 80% 20%, #15151e 0%, #07070a 100%);
+    }
+    .eth-topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding-bottom: 16px;
+    }
+    .eth-brand {
+      font-family: var(--font-display);
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #fff;
+    }
+    .eth-nav {
+      display: flex;
+      gap: 20px;
+      font-size: 11px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .eth-hero-banner {
+      margin-top: 20px;
+      padding: 24px;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 6px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .eth-hero-text h4 {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 600;
+      color: #fff;
+    }
+    .eth-hero-text p {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+    .eth-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 20px;
+    }
+    .eth-card {
+      background: #0d0d12;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 6px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+    }
+    .eth-img {
+      height: 100px;
+      background: #14141c;
+      border-radius: 4px;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255, 255, 255, 0.2);
+    }
+    .eth-name {
+      font-size: 12px;
+      font-weight: 500;
+      color: #fff;
+    }
+    .eth-price {
+      font-size: 11px;
+      color: var(--gold);
+      margin-top: 2px;
+    }
+
+    /* Slide 2: Rassani POS UI */
+    .slide-rassani {
+      padding: 32px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: radial-gradient(circle at 20% 80%, #171822 0%, #07070a 100%);
+    }
+    .pos-topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding-bottom: 16px;
+    }
+    .pos-brand {
+      font-family: var(--font-display);
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: #fff;
+    }
+    .pos-status {
+      font-size: 11px;
+      color: #34d399;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .pos-status::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #34d399;
+    }
+    .pos-split {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 20px;
+      margin-top: 20px;
+      flex: 1;
+    }
+    .pos-catalog {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .pos-item {
+      background: #0f0f15;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 4px;
+      padding: 12px;
+    }
+    .pos-item-title {
+      font-size: 12px;
+      font-weight: 500;
+      color: #fff;
+    }
+    .pos-item-sub {
+      font-size: 10px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+    .pos-receipt {
+      background: #0d0d12;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 6px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .pos-receipt-header {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      padding-bottom: 8px;
+    }
+    .pos-total {
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 10px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--alabaster);
+    }
+
+    /* Slide 3: TBS Salon UI */
+    .slide-tbssalon {
+      padding: 32px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: radial-gradient(circle at 50% 30%, #1c1815 0%, #07070a 100%);
+    }
+    .salon-topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding-bottom: 16px;
+    }
+    .salon-brand {
+      font-family: var(--font-display);
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #fff;
+    }
+    .salon-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-top: 24px;
+      flex: 1;
+    }
+    .salon-hero-box {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 6px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .salon-hero-box h4 {
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--alabaster);
+    }
+    .salon-hero-box p {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 8px;
+    }
+    .salon-booking-card {
+      background: #0d0d12;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 6px;
+      padding: 20px;
+    }
+    .salon-booking-card h5 {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+
+    /* Minimal Interactive Switcher Bar */
+    .hero-switcher {
+      display: flex;
+      gap: 12px;
+      margin-top: 20px;
+    }
+    .switcher-btn {
+      flex: 1;
+      padding: 10px 14px;
+      background: transparent;
+      border: 1px solid var(--border-subtle);
+      border-radius: 6px;
+      color: var(--muted);
+      font-family: var(--font-body);
+      font-size: 12px;
+      font-weight: 500;
+      cursor: pointer;
+      text-align: left;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.25s ease;
+    }
+    .switcher-btn:hover {
+      border-color: rgba(255, 255, 255, 0.2);
+      color: var(--alabaster);
+    }
+    .switcher-btn.active {
+      border-color: var(--border-gold);
+      color: var(--alabaster);
+      background: rgba(212, 175, 55, 0.04);
+    }
+    .switcher-btn .idx {
+      font-family: monospace;
+      font-size: 11px;
+      color: var(--gold);
+      font-weight: 700;
+    }
+
+    /* SECTION 2: SERVICES / WHAT WE BUILD */
+    .section-services {
+      padding: 120px 0;
+      border-top: 1px solid var(--border-subtle);
+    }
+    .services-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 72px;
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: 44px;
+      font-weight: 500;
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      color: var(--alabaster);
+    }
+    .section-sublead {
+      font-size: 17px;
+      line-height: 1.75;
+      color: var(--muted);
+      align-self: flex-end;
+    }
+    .service-index {
+      border-top: 1px solid var(--border-subtle);
+    }
+    .service-row {
+      display: grid;
+      grid-template-columns: 80px 1.4fr 1.6fr 120px;
+      gap: 32px;
+      padding: 36px 0;
+      border-bottom: 1px solid var(--border-subtle);
+      align-items: center;
+      transition: background-color 0.2s ease;
+    }
+    .service-row:hover {
+      background: rgba(255, 255, 255, 0.015);
+    }
+    .service-num {
+      font-family: monospace;
+      font-size: 13px;
+      color: var(--gold);
+      font-weight: 600;
+    }
+    .service-name {
+      font-family: var(--font-display);
+      font-size: 24px;
+      font-weight: 500;
+      color: var(--alabaster);
+    }
+    .service-desc {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    .service-link {
+      text-align: right;
+      color: var(--gold);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    /* SECTION 3: SELECTED WORK (EDITORIAL CASE STUDIES) */
+    .section-work {
+      padding: 120px 0;
+      border-top: 1px solid var(--border-subtle);
+      background: rgba(10, 10, 14, 0.3);
+    }
+    .case-spread {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 64px;
+      align-items: center;
+      padding: 60px 0;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .case-spread.reverse {
+      grid-template-columns: 0.85fr 1.15fr;
+    }
+    .case-visual {
+      background: #0b0b10;
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      height: 420px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .case-visual-inner {
+      width: 88%;
+      height: 80%;
+      background: #0f0f15;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 6px;
+      display: flex;
+      flex-direction: column;
+      padding: 24px;
+    }
+    .case-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .case-tag {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .case-title {
+      font-family: var(--font-display);
+      font-size: 38px;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      color: var(--alabaster);
+    }
+    .case-summary {
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--muted);
+    }
+    .case-pills {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 8px;
+    }
+    .case-pill {
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-subtle);
+      color: var(--alabaster);
+    }
+    .case-cta {
+      color: var(--gold);
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 12px;
+    }
+
+    /* SECTION 4: STRATEGY AUTOMATION SCALE (METHODOLOGY) */
+    .section-methodology {
+      padding: 120px 0;
+      border-top: 1px solid var(--border-subtle);
+    }
+    .methodology-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      margin-top: 64px;
+    }
+    .methodology-col {
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      padding: 40px;
+      background: rgba(14, 14, 18, 0.4);
+      transition: border-color 0.25s ease;
+    }
+    .methodology-col:hover {
+      border-color: var(--border-gold);
+    }
+    .methodology-num {
+      font-family: monospace;
+      font-size: 13px;
+      color: var(--gold);
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+    .methodology-title {
+      font-family: var(--font-display);
+      font-size: 24px;
+      font-weight: 500;
+      color: var(--alabaster);
+      margin-bottom: 16px;
+    }
+    .methodology-desc {
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--muted);
+    }
+
+    /* SECTION 5: PROCESS */
+    .section-process {
+      padding: 120px 0;
+      border-top: 1px solid var(--border-subtle);
+      background: rgba(8, 8, 10, 0.4);
+    }
+    .process-timeline {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-top: 64px;
+      border-top: 1px solid var(--border-subtle);
+      padding-top: 40px;
+    }
+    .process-step {
+      display: flex;
+      flex-direction: column;
+    }
+    .step-num {
+      font-family: monospace;
+      font-size: 12px;
+      color: var(--gold);
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+    .step-title {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 500;
+      color: var(--alabaster);
+      margin-bottom: 12px;
+    }
+    .step-desc {
+      font-size: 14px;
+      line-height: 1.65;
+      color: var(--muted);
+    }
+
+    /* SECTION 6: WHY SASVALE */
+    .section-why {
+      padding: 120px 0;
+      border-top: 1px solid var(--border-subtle);
+    }
+    .why-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 32px;
+      margin-top: 64px;
+    }
+    .why-item {
+      padding: 32px;
+      background: rgba(14, 14, 18, 0.3);
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+    }
+    .why-heading {
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 500;
+      color: var(--alabaster);
+      margin-bottom: 14px;
+    }
+    .why-body {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* SECTION 7: INSIGHTS */
+    .section-insights {
+      padding: 120px 0;
+      border-top: 1px solid var(--border-subtle);
+      background: rgba(10, 10, 14, 0.3);
+    }
+    .insights-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      margin-top: 64px;
+    }
+    .insight-card {
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 280px;
+      background: #09090c;
+      transition: border-color 0.2s ease;
+      text-decoration: none;
+    }
+    .insight-card:hover {
+      border-color: var(--border-gold);
+    }
+    .insight-cat {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--gold);
+      font-weight: 600;
+    }
+    .insight-title {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 500;
+      color: var(--alabaster);
+      line-height: 1.35;
+      margin-top: 12px;
+    }
+    .insight-arrow {
+      color: var(--gold);
+      font-size: 13px;
+      font-weight: 600;
+      align-self: flex-end;
+    }
+
+    /* SECTION 8: CONTACT CTA / INTAKE */
+    .section-contact {
+      padding: 120px 0 80px;
+      border-top: 1px solid var(--border-subtle);
+      background: #060608;
+    }
+    .contact-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      padding-bottom: 80px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .contact-title {
+      font-family: var(--font-display);
+      font-size: 48px;
+      font-weight: 500;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      color: var(--alabaster);
+      margin-bottom: 24px;
+    }
+    .contact-lead {
+      font-size: 17px;
+      line-height: 1.75;
+      color: var(--muted);
+      margin-bottom: 32px;
+      max-width: 480px;
+    }
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .form-input {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border-subtle);
+      border-radius: 6px;
+      padding: 14px 18px;
+      color: var(--alabaster);
+      font-family: var(--font-body);
+      font-size: 14px;
+      transition: border-color 0.2s ease;
+    }
+    .form-input:focus {
+      outline: none;
+      border-color: var(--gold);
+    }
+    .form-textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    /* GLOBAL FOOTER META */
+    footer {
+      padding: 40px 0;
+      font-size: 13px;
+      color: var(--muted-dark);
+    }
+    .footer-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .footer-links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+    }
+    .footer-links a {
+      color: var(--muted);
+      text-decoration: none;
+    }
+    .footer-links a:hover {
+      color: var(--gold);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- GLOBAL HEADER -->
+  <header>
+    <div class="container header-inner">
+      <a href="#" class="wordmark">Sasvale</a>
+      <ul class="nav-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#work">Work</a></li>
+        <li><a href="#methodology">Methodology</a></li>
+        <li><a href="#process">Process</a></li>
+        <li><a href="#insights">Insights</a></li>
+      </ul>
+      <a href="#contact" class="btn-gold">Start a Conversation</a>
+    </div>
+  </header>
+
+  <!-- 1. INTERACTIVE PORTFOLIO HERO -->
+  <section class="hero-section">
+    <div class="container hero-grid">
+      <!-- Left Editorial Authority -->
+      <div>
+        <div class="eyebrow">
+          <div class="dot"></div>
+          <span>Strategy · Automation · Scale</span>
+        </div>
+        <h1 class="hero-title">
+          Engineering custom digital systems built to compound and scale.
+        </h1>
+        <p class="hero-lead">
+          Sasvale designs and engineers high-performance web platforms, bespoke operational software, and automated workflows. Direct senior engineering, architectural transparency, and commercial longevity.
+        </p>
+        <div class="hero-ctas">
+          <a href="#contact" class="btn-gold">Start a Conversation →</a>
+          <a href="#work" class="btn-secondary">Explore Selected Work ↓</a>
+        </div>
+        <div class="hero-meta">
+          <span>Active Engagements: <strong>11 Verified Deployments</strong></span>
+          <span>•</span>
+          <span>Leadership: <strong>Direct Principal Engineer</strong></span>
+        </div>
+      </div>
+
+      <!-- Right Real Portfolio Visual Stage (Interactive Switcher) -->
+      <div class="showcase-viewport-container">
+        <div class="showcase-stage">
+          <!-- Slide 01: Ethletia -->
+          <div id="slide-0" class="project-slide active">
+            <div class="slide-ethletia">
+              <div class="eth-topbar">
+                <div class="eth-brand">Ethletia</div>
+                <div class="eth-nav">
+                  <span>Collections</span>
+                  <span>Performance</span>
+                  <span>Bag (2)</span>
+                </div>
+              </div>
+              <div class="eth-hero-banner">
+                <div class="eth-hero-text">
+                  <h4>Spring / Summer Technical Apparel</h4>
+                  <p>Engineered seamless compression and thermo-regulating activewear.</p>
+                </div>
+                <span style="font-size: 11px; text-transform: uppercase; color: var(--gold); letter-spacing: 0.1em; font-weight: 600;">Explore Lookbook</span>
+              </div>
+              <div class="eth-grid">
+                <div class="eth-card">
+                  <div class="eth-img">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                  </div>
+                  <div class="eth-name">Technical Training Shell</div>
+                  <div class="eth-price">$185.00</div>
+                </div>
+                <div class="eth-card">
+                  <div class="eth-img">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                  </div>
+                  <div class="eth-name">Seamless Compression Tight</div>
+                  <div class="eth-price">$110.00</div>
+                </div>
+                <div class="eth-card">
+                  <div class="eth-img">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                  </div>
+                  <div class="eth-name">Merino Base Layer</div>
+                  <div class="eth-price">$95.00</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 02: Rassani POS -->
+          <div id="slide-1" class="project-slide">
+            <div class="slide-rassani">
+              <div class="pos-topbar">
+                <div class="pos-brand">Rassani POS & Inventory Engine</div>
+                <div class="pos-status">Multi-Terminal Sync Active</div>
+              </div>
+              <div class="pos-split">
+                <div class="pos-catalog">
+                  <div class="pos-item">
+                    <div class="pos-item-title">Commercial Espresso Blend</div>
+                    <div class="pos-item-sub">SKU: ESP-092 • In Stock (142)</div>
+                  </div>
+                  <div class="pos-item">
+                    <div class="pos-item-title">Single Origin Filter</div>
+                    <div class="pos-item-sub">SKU: ETH-014 • In Stock (68)</div>
+                  </div>
+                  <div class="pos-item">
+                    <div class="pos-item-title">Barista Almond Milk (Case)</div>
+                    <div class="pos-item-sub">SKU: ALM-008 • In Stock (24)</div>
+                  </div>
+                  <div class="pos-item">
+                    <div class="pos-item-title">Artisan Pastry Selection</div>
+                    <div class="pos-item-sub">SKU: PST-031 • Daily Fresh</div>
+                  </div>
+                </div>
+                <div class="pos-receipt">
+                  <div>
+                    <div class="pos-receipt-header">Active Order #1084</div>
+                    <div style="font-size: 11px; color: var(--muted); margin-top: 8px;">2x Espresso Blend — $36.00</div>
+                    <div style="font-size: 11px; color: var(--muted); margin-top: 4px;">1x Filter Pack — $18.50</div>
+                  </div>
+                  <div class="pos-total">
+                    <span>Total Due</span>
+                    <span style="color: var(--gold);">$54.50</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 03: TBS Salon -->
+          <div id="slide-2" class="project-slide">
+            <div class="slide-tbssalon">
+              <div class="salon-topbar">
+                <div class="salon-brand">TBS Salon</div>
+                <div style="font-size: 11px; color: var(--gold); letter-spacing: 0.1em; text-transform: uppercase;">Appointment Engine</div>
+              </div>
+              <div class="salon-grid">
+                <div class="salon-hero-box">
+                  <h4>Bespoke Hair & Style Architecture</h4>
+                  <p>Contemporary studio appointments, private suites, and precision stylist scheduling.</p>
+                </div>
+                <div class="salon-booking-card">
+                  <h5>Select Stylist & Date</h5>
+                  <div style="font-size: 11px; color: #fff; padding: 8px; background: rgba(255,255,255,0.03); border-radius: 4px; margin-bottom: 8px;">
+                    Principal Stylist: <strong>Elena Vance</strong>
+                  </div>
+                  <div style="font-size: 11px; color: #fff; padding: 8px; background: rgba(255,255,255,0.03); border-radius: 4px;">
+                    Next Slot: <strong>Thursday, 2:30 PM</strong>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project Switcher Buttons -->
+        <div class="hero-switcher">
+          <button class="switcher-btn active" onclick="switchSlide(0)">
+            <span class="idx">01</span>
+            <span>Ethletia · E-Commerce</span>
+          </button>
+          <button class="switcher-btn" onclick="switchSlide(1)">
+            <span class="idx">02</span>
+            <span>Rassani POS · Retail</span>
+          </button>
+          <button class="switcher-btn" onclick="switchSlide(2)">
+            <span class="idx">03</span>
+            <span>TBS Salon · Booking</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. SERVICES / WHAT WE BUILD -->
+  <section id="services" class="section-services">
+    <div class="container">
+      <div class="services-header">
+        <div>
+          <div class="eyebrow">
+            <div class="dot"></div>
+            <span>Capabilities</span>
+          </div>
+          <h2 class="section-title">Bespoke digital architecture tailored to operational reality.</h2>
+        </div>
+        <p class="section-sublead">
+          We eliminate the bloat of traditional full-service agencies. We specialize in five technical disciplines where senior software engineering and modern digital design compound value directly.
+        </p>
+      </div>
+
+      <div class="service-index">
+        <div class="service-row">
+          <span class="service-num">01</span>
+          <h3 class="service-name">Website & CMS Development</h3>
+          <p class="service-desc">Headless Next.js web platforms engineered for sub-second page loads, organic search equity, and scalable content governance.</p>
+          <a href="#contact" class="service-link">Inquire →</a>
+        </div>
+        <div class="service-row">
+          <span class="service-num">02</span>
+          <h3 class="service-name">Custom Software & Systems</h3>
+          <p class="service-desc">Tailored operational management applications, point-of-sale platforms, and real-time transaction engines engineered to replace manual friction.</p>
+          <a href="#contact" class="service-link">Inquire →</a>
+        </div>
+        <div class="service-row">
+          <span class="service-num">03</span>
+          <h3 class="service-name">E-Commerce Architecture</h3>
+          <p class="service-desc">High-conversion commercial storefronts, seamless checkout flows, and automated inventory pipelines engineered on scalable headless backends.</p>
+          <a href="#contact" class="service-link">Inquire →</a>
+        </div>
+        <div class="service-row">
+          <span class="service-num">04</span>
+          <h3 class="service-name">Brand & Design Systems</h3>
+          <p class="service-desc">Comprehensive visual identity programs, three-layer token architectures, and accessible component libraries built for cross-platform consistency.</p>
+          <a href="#contact" class="service-link">Inquire →</a>
+        </div>
+        <div class="service-row">
+          <span class="service-num">05</span>
+          <h3 class="service-name">Automation & API Pipelines</h3>
+          <p class="service-desc">Eliminating human data-entry drag through reliable API orchestrations, custom CRM automations, and intelligent operational data pipelines.</p>
+          <a href="#contact" class="service-link">Inquire →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. SELECTED WORK (EDITORIAL SPREADS) -->
+  <section id="work" class="section-work">
+    <div class="container">
+      <div class="eyebrow">
+        <div class="dot"></div>
+        <span>Selected Engagements</span>
+      </div>
+      <h2 class="section-title" style="margin-bottom: 48px;">Delivered platforms. Observable commercial impact.</h2>
+
+      <!-- Case 01: Ethletia -->
+      <article class="case-spread">
+        <div class="case-visual">
+          <div class="case-visual-inner">
+            <div style="font-family: var(--font-display); font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 16px;">ETHLETIA STOREFRONT PLATFORM</div>
+            <p style="font-size: 13px; color: var(--muted); line-height: 1.6;">Next.js Headless Storefront • Sub-second Navigation • Real-time Inventory Cart</p>
+          </div>
+        </div>
+        <div class="case-meta">
+          <span class="case-tag">01 / Digital Commerce</span>
+          <h3 class="case-title">Ethletia</h3>
+          <p class="case-summary">
+            Custom digital commerce storefront and brand experience engineered for responsive mobile performance, fast filtering, and high-conversion checkout workflows.
+          </p>
+          <div class="case-pills">
+            <span class="case-pill">Headless Next.js</span>
+            <span class="case-pill">Mobile Checkout</span>
+            <span class="case-pill">Catalog Engine</span>
+          </div>
+          <a href="#contact" class="case-cta">Explore Case Study →</a>
+        </div>
+      </article>
+
+      <!-- Case 02: Rassani POS -->
+      <article class="case-spread reverse">
+        <div class="case-meta">
+          <span class="case-tag">02 / Custom Software & Systems</span>
+          <h3 class="case-title">Rassani POS</h3>
+          <p class="case-summary">
+            Point-of-sale and retail software management application engineered to handle live transactions, inventory workflows, and multi-user terminal operations.
+          </p>
+          <div class="case-pills">
+            <span class="case-pill">Transaction Engine</span>
+            <span class="case-pill">Inventory Workflows</span>
+            <span class="case-pill">Terminal Dashboard</span>
+          </div>
+          <a href="#contact" class="case-cta">Explore Case Study →</a>
+        </div>
+        <div class="case-visual">
+          <div class="case-visual-inner">
+            <div style="font-family: var(--font-display); font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 16px;">RASSANI POS OPERATIONAL INTERFACE</div>
+            <p style="font-size: 13px; color: var(--muted); line-height: 1.6;">Multi-Terminal Inventory Sync • Fast Checkout Terminal • Offline-Resilient Sync</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- Case 03: TBS Salon -->
+      <article class="case-spread">
+        <div class="case-visual">
+          <div class="case-visual-inner">
+            <div style="font-family: var(--font-display); font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 16px;">TBS SALON BRAND & BOOKING PLATFORM</div>
+            <p style="font-size: 13px; color: var(--muted); line-height: 1.6;">Contemporary Visual Identity • Appointment Flow • Studio Service Showcase</p>
+          </div>
+        </div>
+        <div class="case-meta">
+          <span class="case-tag">03 / Brand Identity & Booking</span>
+          <h3 class="case-title">TBS Salon</h3>
+          <p class="case-summary">
+            Modern visual identity and online appointment platform engineered for contemporary beauty studios, streamlining client reservations and brand presentation.
+          </p>
+          <div class="case-pills">
+            <span class="case-pill">Brand Identity</span>
+            <span class="case-pill">Appointment Flow</span>
+            <span class="case-pill">Mobile Booking</span>
+          </div>
+          <a href="#contact" class="case-cta">Explore Case Study →</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- 4. STRATEGY AUTOMATION SCALE (METHODOLOGY) -->
+  <section id="methodology" class="section-methodology">
+    <div class="container">
+      <div class="eyebrow">
+        <div class="dot"></div>
+        <span>Core Methodology</span>
+      </div>
+      <h2 class="section-title">The system behind every delivery.</h2>
+
+      <div class="methodology-grid">
+        <div class="methodology-col">
+          <div class="methodology-num">01 / STRATEGY</div>
+          <h3 class="methodology-title">Architecture & Positioning</h3>
+          <p class="methodology-desc">
+            We align technical choices with your business goals before writing code. Transparent scoping, scalable data models, and zero junior handoffs.
+          </p>
+        </div>
+        <div class="methodology-col">
+          <div class="methodology-num">02 / AUTOMATION</div>
+          <h3 class="methodology-title">Custom Software & Workflows</h3>
+          <p class="methodology-desc">
+            Eliminating operational bottlenecks through tailored management software, secure API orchestrations, and intelligent data pipelines.
+          </p>
+        </div>
+        <div class="methodology-col">
+          <div class="methodology-num">03 / SCALE</div>
+          <h3 class="methodology-title">Compounding Digital Value</h3>
+          <p class="methodology-desc">
+            Platforms engineered to perform under traffic surges, preserve organic search equity, and maintain codebase maintainability for years to come.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. PROCESS -->
+  <section id="process" class="section-process">
+    <div class="container">
+      <div class="eyebrow">
+        <div class="dot"></div>
+        <span>Delivery Framework</span>
+      </div>
+      <h2 class="section-title">Disciplined execution from discovery to deployment.</h2>
+
+      <div class="process-timeline">
+        <div class="process-step">
+          <span class="step-num">STAGE 01</span>
+          <h3 class="step-title">Discovery & System Architecture</h3>
+          <p class="step-desc">We audit technical prerequisites, map data flows, lock scope, and deliver a rigorous architecture specification before writing code.</p>
+        </div>
+        <div class="process-step">
+          <span class="step-num">STAGE 02</span>
+          <h3 class="step-title">Iterative Principal Engineering</h3>
+          <p class="step-desc">Direct senior engineering access with weekly demonstrable milestones. No account manager layers or delayed progress updates.</p>
+        </div>
+        <div class="process-step">
+          <span class="step-num">STAGE 03</span>
+          <h3 class="step-title">Verification & Production Hardening</h3>
+          <p class="step-desc">Strict automated testing, Core Web Vitals optimization, semantic SEO audits, and WCAG accessibility compliance verification.</p>
+        </div>
+        <div class="process-step">
+          <span class="step-num">STAGE 04</span>
+          <h3 class="step-title">Deployment & Longevity Governance</h3>
+          <p class="step-desc">Zero-downtime cutover, complete codebase handover with clean documentation, and ongoing architectural scaling support.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. WHY SASVALE -->
+  <section class="section-why">
+    <div class="container">
+      <div class="eyebrow">
+        <div class="dot"></div>
+        <span>The Difference</span>
+      </div>
+      <h2 class="section-title">Principal-led certainty vs. agency overhead.</h2>
+
+      <div class="why-grid">
+        <div class="why-item">
+          <h3 class="why-heading">Direct Senior Oversight</h3>
+          <p class="why-body">Every engagement is architected and executed directly by senior principal engineers. No bait-and-switch pitching, no offshore subcontracting, no junior training on your budget.</p>
+        </div>
+        <div class="why-item">
+          <h3 class="why-heading">Commercial Longevity</h3>
+          <p class="why-body">We build software to be owned and maintained by your organization. Clean modular code, zero proprietary lock-in, and transparent documentation from day one.</p>
+        </div>
+        <div class="why-item">
+          <h3 class="why-heading">Factual Scoping</h3>
+          <p class="why-body">Transparent milestone commitments based on engineering realities, not optimistic sales promises. You receive direct, honest technical counsel at every phase.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. INSIGHTS -->
+  <section id="insights" class="section-insights">
+    <div class="container">
+      <div class="eyebrow">
+        <div class="dot"></div>
+        <span>Strategic Perspective</span>
+      </div>
+      <h2 class="section-title">Editorial perspectives on digital systems.</h2>
+
+      <div class="insights-grid">
+        <a href="#contact" class="insight-card">
+          <div>
+            <span class="insight-cat">Systems Architecture</span>
+            <h3 class="insight-title">Why headless Next.js platforms outperform legacy monolithic CMS suites in enterprise agility.</h3>
+          </div>
+          <span class="insight-arrow">Read Perspective →</span>
+        </a>
+        <a href="#contact" class="insight-card">
+          <div>
+            <span class="insight-cat">Operations & Software</span>
+            <h3 class="insight-title">Eliminating operational drag: When custom software beats off-the-shelf SaaS stacks.</h3>
+          </div>
+          <span class="insight-arrow">Read Perspective →</span>
+        </a>
+        <a href="#contact" class="insight-card">
+          <div>
+            <span class="insight-cat">Brand Longevity</span>
+            <h3 class="insight-title">Engineering digital brand longevity: How tokenized design systems protect enterprise equity.</h3>
+          </div>
+          <span class="insight-arrow">Read Perspective →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. CONTACT CTA -->
+  <section id="contact" class="section-contact">
+    <div class="container">
+      <div class="contact-split">
+        <div>
+          <div class="eyebrow">
+            <div class="dot"></div>
+            <span>Start a Conversation</span>
+          </div>
+          <h2 class="contact-title">Have an ambitious system to build? Let’s talk.</h2>
+          <p class="contact-lead">
+            Tell us about your project objectives. We provide direct, honest feedback on architectural feasibility, timelines, and execution strategy.
+          </p>
+          <div style="font-size: 14px; color: var(--muted); margin-top: 24px;">
+            <div>Direct Inquiry: <strong style="color: var(--alabaster);">hello@sasvale.com</strong></div>
+            <div style="margin-top: 6px;">Location: <strong style="color: var(--alabaster);">London, UK • Global Client Engagements</strong></div>
+          </div>
+        </div>
+
+        <div>
+          <form class="contact-form" onsubmit="event.preventDefault(); alert('Inquiry received. A principal engineer will respond shortly.');">
+            <input type="text" class="form-input" placeholder="Your Name *" required>
+            <input type="email" class="form-input" placeholder="Work Email *" required>
+            <input type="text" class="form-input" placeholder="Company / Organization">
+            <textarea class="form-input form-textarea" placeholder="Describe the system or platform you want to build *" required></textarea>
+            <button type="submit" class="btn-gold" style="justify-content: center; padding: 14px 28px; width: 100%;">Submit Inquiry →</button>
+          </form>
+        </div>
+      </div>
+
+      <footer class="footer-meta">
+        <div>© 2026 Sasvale. All rights reserved. Direct Principal Engineering Consultancy.</div>
+        <ul class="footer-links">
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms & Conditions</a></li>
+          <li><a href="#">Refund Policy</a></li>
+        </ul>
+      </footer>
+    </div>
+  </section>
+
+  <!-- INTERACTIVE PROJECT SWITCHER SCRIPT -->
+  <script>
+    function switchSlide(index) {
+      const slides = document.querySelectorAll('.project-slide');
+      const buttons = document.querySelectorAll('.switcher-btn');
+      
+      slides.forEach((slide, idx) => {
+        if (idx === index) {
+          slide.classList.add('active');
+        } else {
+          slide.classList.remove('active');
+        }
+      });
+
+      buttons.forEach((btn, idx) => {
+        if (idx === index) {
+          btn.classList.add('active');
+        } else {
+          btn.classList.remove('active');
+        }
+      });
+    }
+  </script>
+</body>
+</html>

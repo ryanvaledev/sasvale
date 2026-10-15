@@ -1,0 +1,165 @@
+/* ==========================================================================
+   Sasvale Custom Brand Font Faces (Bricolage Grotesque & DM Sans)
+   ========================================================================== */
+
+/* Bricolage Grotesque (Headings) */
+@font-face {
+  font-family: 'Bricolage Grotesque';
+  font-style: normal;
+  font-weight: 200;
+  font-display: swap;
+  src: url('/assets/fonts/bricolagegrotesque48pt-extralight.woff2') format('woff2'),
+       url('/assets/fonts/bricolagegrotesque48pt-extralight.woff') format('woff'),
+       url('/assets/fonts/bricolagegrotesque48pt-extralight.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Bricolage Grotesque';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url('/assets/fonts/bricolagegrotesque48pt-light.woff2') format('woff2'),
+       url('/assets/fonts/bricolagegrotesque48pt-light.woff') format('woff'),
+       url('/assets/fonts/bricolagegrotesque48pt-light.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Bricolage Grotesque';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/assets/fonts/bricolagegrotesque48pt-regular.woff2') format('woff2'),
+       url('/assets/fonts/bricolagegrotesque48pt-regular.woff') format('woff'),
+       url('/assets/fonts/bricolagegrotesque48pt-regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Bricolage Grotesque';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('/assets/fonts/bricolagegrotesque48pt-medium.woff2') format('woff2'),
+       url('/assets/fonts/bricolagegrotesque48pt-medium.woff') format('woff'),
+       url('/assets/fonts/bricolagegrotesque48pt-medium.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Bricolage Grotesque';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('/assets/fonts/bricolagegrotesque48pt-semibold.woff2') format('woff2'),
+       url('/assets/fonts/bricolagegrotesque48pt-semibold.woff') format('woff'),
+       url('/assets/fonts/bricolagegrotesque48pt-semibold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Bricolage Grotesque';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/assets/fonts/bricolagegrotesque48pt-bold.woff2') format('woff2'),
+       url('/assets/fonts/bricolagegrotesque48pt-bold.woff') format('woff'),
+       url('/assets/fonts/bricolagegrotesque48pt-bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Bricolage Grotesque';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url('/assets/fonts/bricolagegrotesque48pt-extrabold.woff2') format('woff2'),
+       url('/assets/fonts/bricolagegrotesque48pt-extrabold.woff') format('woff'),
+       url('/assets/fonts/bricolagegrotesque48pt-extrabold.ttf') format('truetype');
+}
+
+/* DM Sans (Body, Cards, Buttons, Form) */
+@font-face {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 100;
+  font-display: swap;
+  src: url('/assets/fonts/dmsans-thin.woff2') format('woff2'),
+       url('/assets/fonts/dmsans-thin.woff') format('woff'),
+       url('/assets/fonts/dmsans-thin.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 200;
+  font-display: swap;
+  src: url('/assets/fonts/dmsans-extralight.woff2') format('woff2'),
+       url('/assets/fonts/dmsans-extralight.woff') format('woff'),
+       url('/assets/fonts/dmsans-extralight.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url('/assets/fonts/dmsans-light.woff2') format('woff2'),
+       url('/assets/fonts/dmsans-light.woff') format('woff'),
+       url('/assets/fonts/dmsans-light.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/assets/fonts/dmsans-regular.woff2') format('woff2'),
+       url('/assets/fonts/dmsans-regular.woff') format('woff'),
+       url('/assets/fonts/dmsans-regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('/assets/fonts/dmsans-medium.woff2') format('woff2'),
+       url('/assets/fonts/dmsans-medium.woff') format('woff'),
+       url('/assets/fonts/dmsans-medium.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('/assets/fonts/dmsans-semibold.woff2') format('woff2'),
+       url('/assets/fonts/dmsans-semibold.woff') format('woff'),
+       url('/assets/fonts/dmsans-semibold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/assets/fonts/dmsans-bold.woff2') format('woff2'),
+       url('/assets/fonts/dmsans-bold.woff') format('woff'),
+       url('/assets/fonts/dmsans-bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url('/assets/fonts/dmsans-extrabold.woff2') format('woff2'),
+       url('/assets/fonts/dmsans-extrabold.woff') format('woff'),
+       url('/assets/fonts/dmsans-extrabold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url('/assets/fonts/dmsans-black.woff2') format('woff2'),
+       url('/assets/fonts/dmsans-black.woff') format('woff'),
+       url('/assets/fonts/dmsans-black.ttf') format('truetype');
+}
