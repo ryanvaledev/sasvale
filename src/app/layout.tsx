@@ -70,7 +70,7 @@ export default function RootLayout({
           <SiteFooter />
 
           {/* Floating Utility Rail */}
-          <FloatingUtilityRail />
+          {/* <FloatingUtilityRail /> */}
         </SmoothScrollProvider>
       </body>
     </html>
