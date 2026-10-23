@@ -1,14 +1,16 @@
 import type { Metadata, Viewport } from "next";
 import { Manrope, DM_Sans } from "next/font/google";
 import { constructMetadata } from "@/lib/seo/metadata";
-import { generateOrganizationSchema, generateWebSiteSchema } from "@/lib/seo/jsonld";
+import {
+  generateOrganizationSchema,
+  generateWebSiteSchema,
+} from "@/lib/seo/jsonld";
 import { JsonLd } from "@/components/shared/JsonLd";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { FloatingUtilityRail } from "@/components/layout/FloatingUtilityRail";
 import { SmoothScrollProvider } from "@/components/shared/SmoothScrollProvider";
 import { ThemeScript } from "@/lib/theme/ThemeScript";
-import Script from "next/script";
 import "@/styles/globals.css";
 
 const manrope = Manrope({
@@ -40,33 +42,61 @@ export default function RootLayout({
 }) {
   const organizationSchema = generateOrganizationSchema();
   const websiteSchema = generateWebSiteSchema();
-  const gaId = process.env.NEXT_PUBLIC_GA_ID;
 
   return (
-    <html lang="en" suppressHydrationWarning className={`${manrope.variable} ${dmSans.variable}`}>
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={`${manrope.variable} ${dmSans.variable}`}
+    >
       <head>
+        {/* Google Tag Manager */}
+        <script
+          id="google-tag-manager"
+          dangerouslySetInnerHTML={{
+            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-WCKP4NVG');`,
+          }}
+        />
+        {/* End Google Tag Manager */}
+        {/* Google tag (gtag.js) */}
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-ZN76MNJCBQ"
+        />
+        <script
+          id="google-tag-gtag"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-ZN76MNJCBQ');
+            `,
+          }}
+        />
         <ThemeScript />
-        <link rel="alternate" type="application/rss+xml" title="Sasvale Insights" href="/feed.xml" />
+        <link
+          rel="alternate"
+          type="application/rss+xml"
+          title="Sasvale Insights"
+          href="/feed.xml"
+        />
       </head>
       <body className="min-h-screen flex flex-col bg-[var(--color-bg-primary)] text-[var(--color-text-primary)] font-sans antialiased selection:bg-[#C6A56B] selection:text-slate-950 transition-colors duration-200">
-        {gaId && (
-          <>
-            <Script
-              src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
-              strategy="afterInteractive"
-            />
-            <Script id="google-analytics" strategy="afterInteractive">
-              {`
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
-                gtag('config', '${gaId}', {
-                  page_path: window.location.pathname,
-                });
-              `}
-            </Script>
-          </>
-        )}
+        {/* Google Tag Manager (noscript) */}
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-WCKP4NVG"
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+          />
+        </noscript>
+        {/* End Google Tag Manager (noscript) */}
         <SmoothScrollProvider>
           {/* WCAG 2.2 AA Accessible Skip Link */}
           <a
