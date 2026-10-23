@@ -78,18 +78,11 @@ const SHOWCASE_PROJECTS: ShowcaseProject[] = [
     alt: "TBS Salon studio showcase and customer reservation system",
     deliverable: "Contemporary Visual Identity",
   },
-  // {
-  //   id: "onlinegoodies",
-  //   name: "Online Goodies",
-  //   category: "Brand Platform",
-  //   image: "/assets/projects/onlinegoodies.png",
-  //   alt: "TBS Salon studio showcase and customer reservation system",
-  //   deliverable: "Contemporary Visual Identity",
-  // },
+
 ];
 
 function subscribeReducedMotion(callback: () => void) {
-  if (typeof window === "undefined") return () => {};
+  if (typeof window === "undefined") return () => { };
   const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
   mediaQuery.addEventListener("change", callback);
   return () => mediaQuery.removeEventListener("change", callback);
@@ -105,7 +98,7 @@ function getReducedMotionServerSnapshot() {
 }
 
 function subscribeTheme(callback: () => void) {
-  if (typeof window === "undefined") return () => {};
+  if (typeof window === "undefined") return () => { };
   window.addEventListener("storage", callback);
   window.addEventListener("theme-change", callback);
   return () => {
@@ -428,20 +421,18 @@ export default function InteractivePortfolioHero() {
         <div className="max-w-4xl mx-auto text-center pt-4 sm:pt-6 lg:pt-8 animate-hero-enter">
           {/* Eyebrow Pill */}
           <div
-            className={`inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border mb-5 sm:mb-6 backdrop-blur-sm transition-colors duration-300 ${
-              isDark
+            className={`inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border mb-5 sm:mb-6 backdrop-blur-sm transition-colors duration-300 ${isDark
                 ? "border-white/10 bg-white/[0.02]"
                 : "border-black/10 bg-white/70 shadow-[0_2px_8px_rgba(0,0,0,0.03)]"
-            }`}
+              }`}
           >
             <span
               className="w-1.5 h-1.5 rounded-full bg-[#C6A56B] animate-pulse"
               aria-hidden="true"
             />
             <span
-              className={`text-[11px] sm:text-xs font-semibold tracking-[0.2em] uppercase ${
-                isDark ? "text-[#C6A56B]" : "text-[#9e7f45]"
-              }`}
+              className={`text-[11px] sm:text-xs font-semibold tracking-[0.2em] uppercase ${isDark ? "text-[#C6A56B]" : "text-[#9e7f45]"
+                }`}
             >
               STRATEGY. AUTOMATION. SCALE.
             </span>
@@ -449,9 +440,8 @@ export default function InteractivePortfolioHero() {
 
           {/* High-Impact Centered Headline */}
           <h1
-            className={`font-display text-4xl sm:text-5xl lg:text-6xl xl:text-[66px] 2xl:text-[72px] font-semibold leading-[1.08] tracking-[-0.035em] mb-5 sm:mb-6 transition-colors duration-300 ${
-              isDark ? "text-[#F3F0E8]" : "text-[#0B0B0B]"
-            }`}
+            className={`font-display text-4xl sm:text-5xl lg:text-6xl xl:text-[66px] 2xl:text-[72px] font-semibold leading-[1.08] tracking-[-0.035em] mb-5 sm:mb-6 transition-colors duration-300 ${isDark ? "text-[#F3F0E8]" : "text-[#0B0B0B]"
+              }`}
           >
             Websites. Software. Automation. <br className="hidden sm:inline" />
             <span className={isDark ? "text-[#C6A56B]" : "text-[#9e7f45]"}>
@@ -461,9 +451,8 @@ export default function InteractivePortfolioHero() {
 
           {/* Concise Supporting Narrative */}
           <p
-            className={`text-base sm:text-lg lg:text-lg xl:text-xl leading-relaxed max-w-2xl mx-auto mb-8 sm:mb-10 font-normal font-body transition-colors duration-300 ${
-              isDark ? "text-[#A8A49B]" : "text-[#4A463F]"
-            }`}
+            className={`text-base sm:text-lg lg:text-lg xl:text-xl leading-relaxed max-w-2xl mx-auto mb-8 sm:mb-10 font-normal font-body transition-colors duration-300 ${isDark ? "text-[#A8A49B]" : "text-[#4A463F]"
+              }`}
           >
             SASVALE designs and builds digital products, e-commerce platforms, custom software, business systems, and AI-powered workflows around real operational needs.
           </p>

@@ -7,7 +7,7 @@ import { useSyncExternalStore } from "react";
 
 // Theme synchronization helpers for dual Dark / Light mode fidelity
 function subscribeTheme(callback: () => void) {
-  if (typeof window === "undefined") return () => {};
+  if (typeof window === "undefined") return () => { };
   window.addEventListener("storage", callback);
   window.addEventListener("theme-change", callback);
   return () => {
@@ -137,7 +137,15 @@ const CAPABILITIES: CapabilityItem[] = [
       "Data Validation & Routing",
       "Automated Operational Tasks",
     ],
-    visualType: "workflow",
+    // visualType: "workflow",
+    visualType: "image",
+    project: {
+      name: "Face of Fitness",
+      type: "Online Fitness Platform",
+      image: "/assets/projects/gym_portal.png",
+      alt: "Face of Fitness platform",
+      slug: "fof",
+    },
   },
   {
     id: "business-systems",
@@ -203,15 +211,13 @@ function AutomationWorkflowVisual({ isDark }: { isDark: boolean }) {
 
   return (
     <div
-      className={`w-full h-full p-4 sm:p-5 flex flex-col justify-between select-none ${
-        isDark ? "bg-[#090d16] text-[#F3F0E8]" : "bg-[#F9F7F2] text-[#0B0B0B]"
-      }`}
+      className={`w-full h-full p-4 sm:p-5 flex flex-col justify-between select-none ${isDark ? "bg-[#090d16] text-[#F3F0E8]" : "bg-[#F9F7F2] text-[#0B0B0B]"
+        }`}
     >
       {/* Telemetry Header */}
       <div
-        className={`flex items-center justify-between pb-3 border-b ${
-          isDark ? "border-white/[0.08]" : "border-black/[0.08]"
-        }`}
+        className={`flex items-center justify-between pb-3 border-b ${isDark ? "border-white/[0.08]" : "border-black/[0.08]"
+          }`}
       >
         <div className="flex items-center gap-2">
           <span className="w-2 h-2 rounded-full bg-[#C6A56B] animate-pulse" aria-hidden="true" />
@@ -220,9 +226,8 @@ function AutomationWorkflowVisual({ isDark }: { isDark: boolean }) {
           </span>
         </div>
         <span
-          className={`font-mono text-[10px] ${
-            isDark ? "text-slate-400" : "text-slate-500"
-          }`}
+          className={`font-mono text-[10px] ${isDark ? "text-slate-400" : "text-slate-500"
+            }`}
         >
           AVG_LATENCY: 42MS
         </span>
@@ -233,50 +238,45 @@ function AutomationWorkflowVisual({ isDark }: { isDark: boolean }) {
         {steps.map((item, idx) => (
           <div
             key={item.step}
-            className={`relative p-3 rounded-lg border transition-all duration-300 ${
-              isDark
+            className={`relative p-3 rounded-lg border transition-all duration-300 ${isDark
                 ? "bg-[#0e1422] border-white/[0.08] hover:border-[#C6A56B]/40"
                 : "bg-white border-black/[0.08] hover:border-[#C6A56B]/50 shadow-sm"
-            }`}
+              }`}
           >
             <div className="flex items-center justify-between mb-1.5">
               <span className="font-mono text-[10px] text-[#C6A56B] font-semibold tracking-wider">
                 NODE_{item.step}
               </span>
               <span
-                className={`font-mono text-[8px] px-1 py-0.5 rounded border ${
-                  idx === 2
+                className={`font-mono text-[8px] px-1 py-0.5 rounded border ${idx === 2
                     ? "bg-[#C6A56B]/15 text-[#C6A56B] border-[#C6A56B]/30"
                     : isDark
                       ? "bg-white/[0.04] text-slate-400 border-white/[0.06]"
                       : "bg-black/[0.04] text-slate-500 border-black/[0.06]"
-                }`}
+                  }`}
               >
                 {item.badge}
               </span>
             </div>
 
             <h4
-              className={`font-display text-xs font-semibold tracking-tight ${
-                isDark ? "text-white" : "text-[#0B0B0B]"
-              }`}
+              className={`font-display text-xs font-semibold tracking-tight ${isDark ? "text-white" : "text-[#0B0B0B]"
+                }`}
             >
               {item.name}
             </h4>
             <p
-              className={`text-[10px] mt-0.5 line-clamp-1 ${
-                isDark ? "text-slate-400" : "text-slate-500"
-              }`}
+              className={`text-[10px] mt-0.5 line-clamp-1 ${isDark ? "text-slate-400" : "text-slate-500"
+                }`}
             >
               {item.detail}
             </p>
 
             <div
-              className={`mt-2 pt-1.5 flex items-center justify-between border-t font-mono text-[8px] ${
-                isDark
+              className={`mt-2 pt-1.5 flex items-center justify-between border-t font-mono text-[8px] ${isDark
                   ? "border-white/[0.05] text-slate-500"
                   : "border-black/[0.05] text-slate-400"
-              }`}
+                }`}
             >
               <span>OK</span>
               <span>{item.latency}</span>
@@ -287,11 +287,10 @@ function AutomationWorkflowVisual({ isDark }: { isDark: boolean }) {
 
       {/* Telemetry Status Footer */}
       <div
-        className={`pt-2.5 border-t flex flex-wrap items-center justify-between gap-2 font-mono text-[10px] ${
-          isDark
+        className={`pt-2.5 border-t flex flex-wrap items-center justify-between gap-2 font-mono text-[10px] ${isDark
             ? "border-white/[0.06] text-slate-400"
             : "border-black/[0.06] text-slate-500"
-        }`}
+          }`}
       >
         <span className="flex items-center gap-1.5">
           <span className="text-[#C6A56B]">✓</span> ZERO MANUAL DATA ENTRY
@@ -354,20 +353,18 @@ export default function ProprietaryProductsRail() {
         <div className="max-w-3xl mb-8 sm:mb-10 lg:mb-12">
           {/* Eyebrow Pill */}
           <div
-            className={`inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border mb-4 sm:mb-5 backdrop-blur-sm transition-colors duration-300 ${
-              isDark
+            className={`inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border mb-4 sm:mb-5 backdrop-blur-sm transition-colors duration-300 ${isDark
                 ? "border-white/10 bg-white/[0.02]"
                 : "border-black/10 bg-white/70 shadow-[0_2px_8px_rgba(0,0,0,0.03)]"
-            }`}
+              }`}
           >
             <span
               className="w-1.5 h-1.5 rounded-full bg-[#C6A56B]"
               aria-hidden="true"
             />
             <span
-              className={`text-[11px] sm:text-xs font-semibold tracking-[0.22em] uppercase ${
-                isDark ? "text-[#C6A56B]" : "text-[#9e7f45]"
-              }`}
+              className={`text-[11px] sm:text-xs font-semibold tracking-[0.22em] uppercase ${isDark ? "text-[#C6A56B]" : "text-[#9e7f45]"
+                }`}
             >
               WHAT WE DO
             </span>
@@ -375,9 +372,8 @@ export default function ProprietaryProductsRail() {
 
           {/* Large Editorial Headline */}
           <h2
-            className={`font-display text-3xl sm:text-4xl lg:text-[44px] xl:text-[50px] font-semibold leading-[1.12] tracking-[-0.03em] mb-4 sm:mb-5 transition-colors duration-300 ${
-              isDark ? "text-[#F3F0E8]" : "text-[#0B0B0B]"
-            }`}
+            className={`font-display text-3xl sm:text-4xl lg:text-[44px] xl:text-[50px] font-semibold leading-[1.12] tracking-[-0.03em] mb-4 sm:mb-5 transition-colors duration-300 ${isDark ? "text-[#F3F0E8]" : "text-[#0B0B0B]"
+              }`}
           >
             From digital products <br className="hidden sm:inline" />
             <span className={isDark ? "text-[#C6A56B]" : "text-[#9e7f45]"}>
@@ -387,9 +383,8 @@ export default function ProprietaryProductsRail() {
 
           {/* Supporting Idea */}
           <p
-            className={`text-base sm:text-lg leading-relaxed max-w-2xl font-normal font-body transition-colors duration-300 ${
-              isDark ? "text-[#A8A49B]" : "text-[#5F5B54]"
-            }`}
+            className={`text-base sm:text-lg leading-relaxed max-w-2xl font-normal font-body transition-colors duration-300 ${isDark ? "text-[#A8A49B]" : "text-[#5F5B54]"
+              }`}
           >
             SASVALE designs and builds digital products, e-commerce platforms, custom software, business systems, and AI-powered workflows around real operational needs.
           </p>
@@ -415,15 +410,14 @@ export default function ProprietaryProductsRail() {
                   aria-selected={isActive}
                   aria-controls={`panel-${item.id}`}
                   onClick={() => setActiveIndex(index)}
-                  className={`group relative w-full text-left h-[105px] min-h-[105px] px-5 py-4 rounded-xl border transition-all duration-300 cursor-pointer flex flex-col justify-between ${
-                    isActive
+                  className={`group relative w-full text-left h-[105px] min-h-[105px] px-5 py-4 rounded-xl border transition-all duration-300 cursor-pointer flex flex-col justify-between ${isActive
                       ? isDark
                         ? "bg-[#14120e] border-[#C6A56B] shadow-[0_4px_24px_rgba(198,165,107,0.14)]"
                         : "bg-[#FAF7F0] border-[#C6A56B] shadow-[0_4px_20px_rgba(198,165,107,0.16)]"
                       : isDark
                         ? "bg-transparent border-white/[0.06] hover:bg-white/[0.02] hover:border-white/12"
                         : "bg-transparent border-black/[0.06] hover:bg-black/[0.02] hover:border-black/12"
-                  }`}
+                    }`}
                 >
                   {/* Active Indicator Bar on Left Edge */}
                   {isActive && (
@@ -437,13 +431,12 @@ export default function ProprietaryProductsRail() {
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
                       <span
-                        className={`font-mono text-xs font-semibold tracking-wider transition-colors ${
-                          isActive
+                        className={`font-mono text-xs font-semibold tracking-wider transition-colors ${isActive
                             ? "text-[#C6A56B]"
                             : isDark
                               ? "text-slate-500 group-hover:text-slate-400"
                               : "text-slate-400 group-hover:text-slate-600"
-                        }`}
+                          }`}
                       >
                         {item.number}
                       </span>
@@ -456,13 +449,12 @@ export default function ProprietaryProductsRail() {
 
                     {/* Clear Arrow Indicator */}
                     <span
-                      className={`w-6 h-6 rounded-full flex items-center justify-center transition-all duration-300 ${
-                        isActive
+                      className={`w-6 h-6 rounded-full flex items-center justify-center transition-all duration-300 ${isActive
                           ? "bg-[#C6A56B] text-black shadow-sm"
                           : isDark
                             ? "bg-white/[0.04] text-slate-500 group-hover:text-white group-hover:bg-white/[0.08] group-hover:translate-x-0.5"
                             : "bg-black/[0.04] text-slate-400 group-hover:text-black group-hover:bg-black/[0.08] group-hover:translate-x-0.5"
-                      }`}
+                        }`}
                       aria-hidden="true"
                     >
                       <svg
@@ -480,28 +472,26 @@ export default function ProprietaryProductsRail() {
                   {/* Bottom Row: Title & Subtitle */}
                   <div>
                     <h3
-                      className={`font-display text-[15px] sm:text-base font-semibold tracking-tight transition-colors ${
-                        isActive
+                      className={`font-display text-[15px] sm:text-base font-semibold tracking-tight transition-colors ${isActive
                           ? isDark
                             ? "text-white"
                             : "text-[#0B0B0B]"
                           : isDark
                             ? "text-slate-300 group-hover:text-white"
                             : "text-slate-700 group-hover:text-[#0B0B0B]"
-                      }`}
+                        }`}
                     >
                       {item.navTitle}
                     </h3>
                     <p
-                      className={`text-xs mt-0.5 transition-colors truncate ${
-                        isActive
+                      className={`text-xs mt-0.5 transition-colors truncate ${isActive
                           ? isDark
                             ? "text-[#C6A56B]/90"
                             : "text-[#9e7f45]"
                           : isDark
                             ? "text-slate-500 group-hover:text-slate-400"
                             : "text-slate-400 group-hover:text-slate-600"
-                      }`}
+                        }`}
                     >
                       {item.navSubtitle}
                     </p>
@@ -516,11 +506,10 @@ export default function ProprietaryProductsRail() {
             id={`panel-${activeCapability.id}`}
             role="tabpanel"
             aria-labelledby={`tab-${activeCapability.id}`}
-            className={`rounded-2xl border p-5 sm:p-6 lg:p-6 xl:p-7 transition-all duration-300 flex flex-col justify-between ${
-              isDark
+            className={`rounded-2xl border p-5 sm:p-6 lg:p-6 xl:p-7 transition-all duration-300 flex flex-col justify-between ${isDark
                 ? "bg-[#101217] border-white/[0.08] shadow-[0_20px_50px_rgba(0,0,0,0.6)]"
                 : "bg-white border-black/[0.08] shadow-[0_20px_50px_rgba(11,11,11,0.06)]"
-            }`}
+              }`}
           >
             {/* Panel Header */}
             <div className="mb-4 sm:mb-5">
@@ -528,16 +517,14 @@ export default function ProprietaryProductsRail() {
                 {activeCapability.eyebrow}
               </span>
               <h3
-                className={`font-display text-2xl sm:text-[26px] font-semibold tracking-tight mb-2 transition-colors ${
-                  isDark ? "text-white" : "text-[#0B0B0B]"
-                }`}
+                className={`font-display text-2xl sm:text-[26px] font-semibold tracking-tight mb-2 transition-colors ${isDark ? "text-white" : "text-[#0B0B0B]"
+                  }`}
               >
                 {activeCapability.headline}
               </h3>
               <p
-                className={`text-xs sm:text-[13px] leading-relaxed max-w-2xl transition-colors ${
-                  isDark ? "text-[#A8A49B]" : "text-[#5F5B54]"
-                }`}
+                className={`text-xs sm:text-[13px] leading-relaxed max-w-2xl transition-colors ${isDark ? "text-[#A8A49B]" : "text-[#5F5B54]"
+                  }`}
               >
                 {activeCapability.description}
               </p>
@@ -547,11 +534,10 @@ export default function ProprietaryProductsRail() {
                 {activeCapability.disciplines.map((d) => (
                   <span
                     key={d}
-                    className={`font-mono text-[10px] px-2 py-0.5 rounded border tracking-wide uppercase transition-colors ${
-                      isDark
+                    className={`font-mono text-[10px] px-2 py-0.5 rounded border tracking-wide uppercase transition-colors ${isDark
                         ? "bg-white/[0.02] text-slate-300 border-white/[0.08]"
                         : "bg-black/[0.02] text-slate-700 border-black/[0.08]"
-                    }`}
+                      }`}
                   >
                     {d}
                   </span>
@@ -561,19 +547,17 @@ export default function ProprietaryProductsRail() {
 
             {/* Visual Frame: Browser Device or System Flow */}
             <div
-              className={`rounded-xl border overflow-hidden transition-all duration-300 ${
-                isDark
+              className={`rounded-xl border overflow-hidden transition-all duration-300 ${isDark
                   ? "bg-[#07090e] border-white/[0.08] shadow-2xl"
                   : "bg-[#F3F0E8] border-black/[0.08] shadow-md"
-              }`}
+                }`}
             >
               {/* Browser Header Bar */}
               <div
-                className={`px-3.5 py-2 flex items-center justify-between border-b ${
-                  isDark
+                className={`px-3.5 py-2 flex items-center justify-between border-b ${isDark
                     ? "bg-[#090d16] border-white/[0.06]"
                     : "bg-[#E9E5DC] border-black/[0.06]"
-                }`}
+                  }`}
               >
                 <div className="flex items-center gap-1.5" aria-hidden="true">
                   <span className="w-2.5 h-2.5 rounded-full bg-red-500/70" />
@@ -583,11 +567,10 @@ export default function ProprietaryProductsRail() {
 
                 {/* Technical Address Bar */}
                 <div
-                  className={`px-2.5 py-0.5 rounded-full text-[10px] font-mono flex items-center gap-1.5 max-w-[260px] sm:max-w-[320px] truncate ${
-                    isDark
+                  className={`px-2.5 py-0.5 rounded-full text-[10px] font-mono flex items-center gap-1.5 max-w-[260px] sm:max-w-[320px] truncate ${isDark
                       ? "bg-white/[0.04] text-slate-400 border border-white/[0.05]"
                       : "bg-white text-slate-600 border border-black/[0.05]"
-                  }`}
+                    }`}
                 >
                   <span className="text-[#C6A56B]">🔒</span>
                   <span className="truncate">
@@ -598,21 +581,19 @@ export default function ProprietaryProductsRail() {
                 {/* Status Indicator */}
                 <div className="flex items-center gap-1.5">
                   <span
-                    className={`w-1.5 h-1.5 rounded-full ${
-                      activeCapability.project?.isInProgress
+                    className={`w-1.5 h-1.5 rounded-full ${activeCapability.project?.isInProgress
                         ? "bg-amber-400 animate-pulse"
                         : "bg-emerald-400"
-                    }`}
+                      }`}
                     aria-hidden="true"
                   />
                   <span
-                    className={`font-mono text-[9px] uppercase tracking-wider hidden sm:inline ${
-                      activeCapability.project?.isInProgress
+                    className={`font-mono text-[9px] uppercase tracking-wider hidden sm:inline ${activeCapability.project?.isInProgress
                         ? "text-amber-400"
                         : isDark
                           ? "text-slate-400"
                           : "text-slate-600"
-                    }`}
+                      }`}
                   >
                     {activeCapability.project?.isInProgress ? "IN PROGRESS" : "LIVE"}
                   </span>
@@ -634,11 +615,10 @@ export default function ProprietaryProductsRail() {
 
                   {/* Bottom Project Metadata Bar */}
                   <div
-                    className={`px-4 py-2.5 flex items-center justify-between gap-3 border-t ${
-                      isDark
+                    className={`px-4 py-2.5 flex items-center justify-between gap-3 border-t ${isDark
                         ? "bg-[#090d16] border-white/[0.06]"
                         : "bg-white border-black/[0.06]"
-                    }`}
+                      }`}
                   >
                     <div className="min-w-0">
                       <div className="flex items-center gap-2">
@@ -646,9 +626,8 @@ export default function ProprietaryProductsRail() {
                           PROJECT
                         </span>
                         <span
-                          className={`font-display text-xs sm:text-sm font-semibold truncate ${
-                            isDark ? "text-white" : "text-[#0B0B0B]"
-                          }`}
+                          className={`font-display text-xs sm:text-sm font-semibold truncate ${isDark ? "text-white" : "text-[#0B0B0B]"
+                            }`}
                         >
                           {activeCapability.project.name}
                         </span>
@@ -659,9 +638,8 @@ export default function ProprietaryProductsRail() {
                         )}
                       </div>
                       <p
-                        className={`text-[11px] truncate mt-0.5 ${
-                          isDark ? "text-slate-400" : "text-slate-500"
-                        }`}
+                        className={`text-[11px] truncate mt-0.5 ${isDark ? "text-slate-400" : "text-slate-500"
+                          }`}
                       >
                         {activeCapability.project.type}
                       </p>
@@ -671,11 +649,10 @@ export default function ProprietaryProductsRail() {
                       <Link
                         href={`/work/${activeCapability.project.slug}`}
                         aria-label={`View ${activeCapability.project.name} case study`}
-                        className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[11px] font-semibold tracking-[-0.01em] transition-all duration-200 cursor-pointer shrink-0 ${
-                          isDark
+                        className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[11px] font-semibold tracking-[-0.01em] transition-all duration-200 cursor-pointer shrink-0 ${isDark
                             ? "bg-white/[0.05] hover:bg-[#C6A56B] text-slate-200 hover:text-black border border-white/10 hover:border-[#C6A56B]"
                             : "bg-black/[0.04] hover:bg-[#C6A56B] text-slate-800 hover:text-black border border-black/10 hover:border-[#C6A56B]"
-                        }`}
+                          }`}
                       >
                         <span>Case Study</span>
                         <svg
@@ -709,15 +686,14 @@ export default function ProprietaryProductsRail() {
             return (
               <div
                 key={item.id}
-                className={`rounded-2xl border overflow-hidden transition-all duration-300 ${
-                  isOpen
+                className={`rounded-2xl border overflow-hidden transition-all duration-300 ${isOpen
                     ? isDark
                       ? "bg-[#101217] border-[#C6A56B]/50 shadow-xl"
                       : "bg-white border-[#C6A56B]/60 shadow-lg"
                     : isDark
                       ? "bg-white/[0.02] border-white/[0.08]"
                       : "bg-white/60 border-black/[0.08]"
-                }`}
+                  }`}
               >
                 {/* Accordion Header Toggle */}
                 <button
@@ -729,36 +705,33 @@ export default function ProprietaryProductsRail() {
                 >
                   <div className="flex items-center gap-3.5">
                     <span
-                      className={`font-mono text-xs font-semibold tracking-wider ${
-                        isOpen ? "text-[#C6A56B]" : isDark ? "text-slate-500" : "text-slate-400"
-                      }`}
+                      className={`font-mono text-xs font-semibold tracking-wider ${isOpen ? "text-[#C6A56B]" : isDark ? "text-slate-500" : "text-slate-400"
+                        }`}
                     >
                       {item.number}
                     </span>
                     <div>
                       <h3
-                        className={`font-display text-base font-semibold tracking-tight ${
-                          isOpen
+                        className={`font-display text-base font-semibold tracking-tight ${isOpen
                             ? isDark
                               ? "text-white"
                               : "text-[#0B0B0B]"
                             : isDark
                               ? "text-slate-200"
                               : "text-slate-800"
-                        }`}
+                          }`}
                       >
                         {item.navTitle}
                       </h3>
                       <p
-                        className={`text-xs mt-0.5 ${
-                          isOpen
+                        className={`text-xs mt-0.5 ${isOpen
                             ? isDark
                               ? "text-slate-400"
                               : "text-slate-600"
                             : isDark
                               ? "text-slate-500"
                               : "text-slate-500"
-                        }`}
+                          }`}
                       >
                         {item.navSubtitle}
                       </p>
@@ -766,13 +739,12 @@ export default function ProprietaryProductsRail() {
                   </div>
 
                   <span
-                    className={`w-7 h-7 rounded-full flex items-center justify-center shrink-0 transition-transform duration-300 ${
-                      isOpen
+                    className={`w-7 h-7 rounded-full flex items-center justify-center shrink-0 transition-transform duration-300 ${isOpen
                         ? "rotate-180 bg-[#C6A56B]/20 text-[#C6A56B]"
                         : isDark
                           ? "bg-white/[0.04] text-slate-400"
                           : "bg-black/[0.04] text-slate-600"
-                    }`}
+                      }`}
                     aria-hidden="true"
                   >
                     <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
@@ -785,14 +757,12 @@ export default function ProprietaryProductsRail() {
                 {isOpen && (
                   <div
                     id={`mobile-panel-${item.id}`}
-                    className={`px-4 sm:px-5 pb-5 pt-2 border-t transition-colors ${
-                      isDark ? "border-white/[0.06]" : "border-black/[0.06]"
-                    }`}
+                    className={`px-4 sm:px-5 pb-5 pt-2 border-t transition-colors ${isDark ? "border-white/[0.06]" : "border-black/[0.06]"
+                      }`}
                   >
                     <p
-                      className={`text-sm leading-relaxed mb-4 ${
-                        isDark ? "text-[#A8A49B]" : "text-[#5F5B54]"
-                      }`}
+                      className={`text-sm leading-relaxed mb-4 ${isDark ? "text-[#A8A49B]" : "text-[#5F5B54]"
+                        }`}
                     >
                       {item.description}
                     </p>
@@ -802,11 +772,10 @@ export default function ProprietaryProductsRail() {
                       {item.disciplines.map((d) => (
                         <span
                           key={d}
-                          className={`font-mono text-[9px] px-2 py-0.5 rounded border uppercase ${
-                            isDark
+                          className={`font-mono text-[9px] px-2 py-0.5 rounded border uppercase ${isDark
                               ? "bg-white/[0.02] text-slate-300 border-white/[0.08]"
                               : "bg-black/[0.02] text-slate-700 border-black/[0.08]"
-                          }`}
+                            }`}
                         >
                           {d}
                         </span>
@@ -815,11 +784,10 @@ export default function ProprietaryProductsRail() {
 
                     {/* Mobile Visual Showcase */}
                     <div
-                      className={`rounded-xl border overflow-hidden ${
-                        isDark
+                      className={`rounded-xl border overflow-hidden ${isDark
                           ? "bg-[#07090e] border-white/[0.08]"
                           : "bg-[#F3F0E8] border-black/[0.08]"
-                      }`}
+                        }`}
                     >
                       {item.visualType === "image" && item.project ? (
                         <div>
@@ -834,17 +802,15 @@ export default function ProprietaryProductsRail() {
                           </div>
 
                           <div
-                            className={`p-3.5 flex flex-col gap-2 border-t ${
-                              isDark
+                            className={`p-3.5 flex flex-col gap-2 border-t ${isDark
                                 ? "bg-[#090d16] border-white/[0.06]"
                                 : "bg-white border-black/[0.06]"
-                            }`}
+                              }`}
                           >
                             <div className="flex items-center justify-between">
                               <h4
-                                className={`font-display text-sm font-medium ${
-                                  isDark ? "text-white" : "text-[#0B0B0B]"
-                                }`}
+                                className={`font-display text-sm font-medium ${isDark ? "text-white" : "text-[#0B0B0B]"
+                                  }`}
                               >
                                 {item.project.name}
                               </h4>
@@ -856,9 +822,8 @@ export default function ProprietaryProductsRail() {
                             </div>
 
                             <p
-                              className={`text-xs ${
-                                isDark ? "text-slate-400" : "text-slate-500"
-                              }`}
+                              className={`text-xs ${isDark ? "text-slate-400" : "text-slate-500"
+                                }`}
                             >
                               {item.project.type}
                             </p>
