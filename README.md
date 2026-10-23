@@ -1,4 +1,4 @@
-# SASVALE — Strategy. Automation. Scale.
+# SASVALE — Strategy. Automation. Scale. 
 
 [![Next.js](https://img.shields.io/badge/Next.js-16.3.3-black?logo=next.js)](https://nextjs.org/)
 [![React](https://img.shields.io/badge/React-19.2.8-blue?logo=react)](https://react.dev/)
