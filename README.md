@@ -19,6 +19,8 @@
 - **AI Model & Agent Indexing**: Native `/llms.txt` and `/llms-full.txt` implementation following the standard AI discovery specification for ChatGPT, Claude, Perplexity, and Google Gemini.
 - **Social Graph Engine**: Edge-generated dynamic Open Graph images via Next.js `ImageResponse` paired with high-resolution static fallback previews (`1200x630`).
 - **Automated Content Syndication**: Dynamic RSS 2.0 XML endpoint (`/feed.xml`) for instant indexation of strategic thought leadership articles.
+- **Enterprise Lead Intake**: Secure `/api/contact` API with Resend integration forwarding client inquiries instantly to `sasvaleltd@gmail.com` with anti-spam honeypot defense.
+- **Analytics & Tag Management**: Native Google Tag Manager (`GTM-WCKP4NVG`) and Google Analytics 4 (`G-ZN76MNJCBQ`) container integration.
 - **Legacy URL Protection**: 122 strict HTTP 308 permanent redirect rules preserving 100% of historical backlinks and domain search equity.
 - **Hardened HTTP Security**: Automated HSTS (`max-age=63072000; preload`), `nosniff`, `SAMEORIGIN`, `strict-origin-when-cross-origin`, and year-long immutable asset caching.
 - **Accessibility Adherence**: Fully compliant with WCAG 2.2 AA standards (visible focus indicators, screen reader landmarks, skip-to-content links).
@@ -44,6 +46,8 @@ sasvale/
 ├── src/
 │   ├── app/                    # Next.js App Router (61 routes)
 │   │   ├── about/              # Studio philosophy & governance
+│   │   ├── api/
+│   │   │   └── contact/        # Serverless lead intake API (Resend email dispatch)
 │   │   ├── approach/           # 4-Phase software development lifecycle
 │   │   ├── capabilities/       # Technical & architectural capabilities
 │   │   ├── contact/            # Project intake & consultation
@@ -180,12 +184,29 @@ Create a `.env.local` file in the project root:
 # Canonical Site URL (defaults to https://sasvale.com in production)
 NEXT_PUBLIC_SITE_URL=https://sasvale.com
 
-# Analytics & Search Console (Optional)
-NEXT_PUBLIC_GA_ID=G-XXXXXXXXXX
+# Contact Form Email Delivery (Resend)
+CONTACT_INBOX_EMAIL=sasvaleltd@gmail.com
+RESEND_API_KEY=re_your_api_key_here
+RESEND_FROM_EMAIL=Sasvale Inquiries <onboarding@resend.dev>
+
+# Google Analytics & Tag Manager (Container: GTM-WCKP4NVG, Measurement: G-ZN76MNJCBQ)
+NEXT_PUBLIC_GA_ID=G-ZN76MNJCBQ
 NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION=your-google-verification-token
 NEXT_PUBLIC_BING_SITE_VERIFICATION=your-bing-verification-token
 NEXT_PUBLIC_YANDEX_VERIFICATION=your-yandex-verification-token
 ```
+
+---
+
+## Inquiry Intake & Contact Architecture
+
+The project includes an enterprise-grade lead intake workflow designed for maximum reliability and simplicity:
+
+- **Target Inbox**: Inquiries are delivered directly to `sasvaleltd@gmail.com`.
+- **Email Delivery Service**: Powered by [Resend](https://resend.com) via the official Node.js SDK. Free tier works immediately with `onboarding@resend.dev` sender.
+- **One-Click Reply**: Inbound notification emails set the sender's actual email as the `replyTo` address, allowing direct replies from Gmail or any email client.
+- **Honeypot Anti-Spam Defense**: Includes a hidden `website_trap` input field. Automated bots filling this field are silently dropped with an HTTP 200 response, avoiding spam in the inbox without degrading human UX with intrusive CAPTCHAs.
+- **Resilient Fallback**: In the event `RESEND_API_KEY` is not configured, the endpoint logs the inquiry parameters securely to the server runtime and returns success so prospects never see a broken experience.
 
 ### Running Locally
 
