@@ -3,13 +3,12 @@ import { z } from "zod";
 import { Resend } from "resend";
 
 const contactFormSchema = z.object({
-  name: z.string().min(2, "Name must be at least 2 characters").max(100),
-  email: z.string().email("Please provide a valid email address"),
-  service: z.string().min(1, "Please select a service area").optional(),
-  message: z.string().min(10, "Message must be at least 10 characters").max(2000),
+  name: z.string().min(1, "Please provide your name").max(150),
+  email: z.string().email("Please provide a valid email address (e.g. alex@company.com)"),
+  service: z.string().optional(),
+  message: z.string().min(2, "Please write at least a few words describing your project or inquiry").max(5000),
   budget: z.string().optional(),
-  // Honeypot field: must remain empty for genuine submissions
-  website_trap: z.string().max(0, "Automated submission detected").optional(),
+  website_trap: z.string().optional(),
 });
 
 const DEFAULT_INBOX = "sasvaleltd@gmail.com";
@@ -25,26 +24,38 @@ function escapeHtml(text: string): string {
 
 export async function POST(request: Request) {
   try {
-    const body = await request.json();
+    const rawBody = await request.json().catch(() => ({}));
+    
+    // Trim string inputs to avoid accidental trailing space issues
+    const body = {
+      name: typeof rawBody.name === "string" ? rawBody.name.trim() : "",
+      email: typeof rawBody.email === "string" ? rawBody.email.trim() : "",
+      service: typeof rawBody.service === "string" ? rawBody.service.trim() : "",
+      message: typeof rawBody.message === "string" ? rawBody.message.trim() : "",
+      budget: typeof rawBody.budget === "string" ? rawBody.budget.trim() : undefined,
+      website_trap: typeof rawBody.website_trap === "string" ? rawBody.website_trap.trim() : "",
+    };
+
+    // If honeypot is filled, silently discard spam
+    if (body.website_trap && body.website_trap.length > 0) {
+      return NextResponse.json(
+        { success: true, message: "Thank you for reaching out." },
+        { status: 200 }
+      );
+    }
+
     const parseResult = contactFormSchema.safeParse(body);
 
     if (!parseResult.success) {
-      const isHoneypotTriggered = parseResult.error.issues.some(
-        (issue) => issue.path.includes("website_trap")
-      );
-
-      if (isHoneypotTriggered) {
-        return NextResponse.json(
-          { success: true, message: "Thank you for reaching out." },
-          { status: 200 }
-        );
-      }
+      const fieldErrors = parseResult.error.flatten().fieldErrors;
+      const firstErrorMessage =
+        Object.values(fieldErrors).flat()[0] || "Please check the form fields and try again.";
 
       return NextResponse.json(
         {
           success: false,
-          error: "Validation failed",
-          details: parseResult.error.flatten().fieldErrors,
+          error: firstErrorMessage,
+          details: fieldErrors,
         },
         { status: 400 }
       );
@@ -127,7 +138,7 @@ export async function POST(request: Request) {
         </html>
       `;
 
-      await resend.emails.send({
+      const { data: resendData, error: resendError } = await resend.emails.send({
         from: process.env.RESEND_FROM_EMAIL || "Sasvale Inquiries <onboarding@resend.dev>",
         to: recipientEmail,
         replyTo: email,
@@ -135,6 +146,12 @@ export async function POST(request: Request) {
         text: `New Inquiry from ${name} (${email})\nService: ${service || "Not specified"}\nBudget: ${budget || "Not specified"}\n\nMessage:\n${message}`,
         html: htmlContent,
       });
+
+      if (resendError) {
+        console.error("[Resend Delivery Error]", resendError);
+      } else {
+        console.info("[Resend Email Sent Successfully]", resendData?.id);
+      }
     }
 
     return NextResponse.json(

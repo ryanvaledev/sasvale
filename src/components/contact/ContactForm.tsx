@@ -23,12 +23,12 @@ export function ContactForm() {
     const form = e.currentTarget;
     const formData = new FormData(form);
     const data = {
-      name: formData.get("name"),
-      email: formData.get("email"),
+      name: String(formData.get("name") || "").trim(),
+      email: String(formData.get("email") || "").trim(),
       service: selectedDiscipline,
-      message: formData.get("message"),
-      budget: formData.get("budget") || undefined,
-      website_trap: formData.get("website_trap") || "",
+      message: String(formData.get("message") || "").trim(),
+      budget: (formData.get("budget") as string)?.trim() || undefined,
+      website_trap: String(formData.get("website_trap") || "").trim(),
     };
 
     try {
@@ -186,7 +186,7 @@ export function ContactForm() {
                   Project Scope &amp; Context <span className="text-[#C6A56B]">*</span>
                 </label>
                 <span className="text-[11px] font-mono text-[#A8A49B]/50">
-                  Minimum 10 characters
+                  Brief description
                 </span>
               </div>
               <textarea
