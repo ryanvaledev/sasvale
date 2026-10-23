@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { constructMetadata } from "@/lib/seo/metadata";
+import { generateBreadcrumbSchema } from "@/lib/seo/jsonld";
+import { JsonLd } from "@/components/shared/JsonLd";
 import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = constructMetadata({
@@ -9,8 +11,14 @@ export const metadata: Metadata = constructMetadata({
 });
 
 export default function TermsConditionsPage() {
+  const breadcrumbs = generateBreadcrumbSchema([
+    { name: "Home", item: "/" },
+    { name: "Terms and Conditions", item: "/terms-conditions" },
+  ]);
+
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <JsonLd data={breadcrumbs} />
       <header className="mb-10 border-b border-slate-800 pb-8">
         <h1 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
           Terms and Conditions

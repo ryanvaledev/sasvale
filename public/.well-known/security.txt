@@ -1,0 +1,7 @@
+Contact: mailto:security@sasvale.com
+Contact: https://sasvale.com/contact
+Expires: 2027-12-31T23:59:59.000Z
+Preferred-Languages: en
+Canonical: https://sasvale.com/.well-known/security.txt
+Policy: https://sasvale.com/terms-conditions
+Hiring: https://sasvale.com/about

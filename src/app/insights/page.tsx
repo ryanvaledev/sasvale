@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { constructMetadata } from "@/lib/seo/metadata";
+import { generateBreadcrumbSchema } from "@/lib/seo/jsonld";
+import { JsonLd } from "@/components/shared/JsonLd";
 
 export const metadata: Metadata = constructMetadata({
   title: "Insights, Strategy & Technical Analysis",
@@ -24,8 +26,14 @@ const articles = [
 ];
 
 export default function InsightsPage() {
+  const breadcrumbs = generateBreadcrumbSchema([
+    { name: "Home", item: "/" },
+    { name: "Insights", item: "/insights" },
+  ]);
+
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <JsonLd data={breadcrumbs} />
       <header className="max-w-3xl mb-12">
         <h1 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
           Insights & Strategic Analysis

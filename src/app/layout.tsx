@@ -8,6 +8,7 @@ import { SiteFooter } from "@/components/layout/SiteFooter";
 import { FloatingUtilityRail } from "@/components/layout/FloatingUtilityRail";
 import { SmoothScrollProvider } from "@/components/shared/SmoothScrollProvider";
 import { ThemeScript } from "@/lib/theme/ThemeScript";
+import Script from "next/script";
 import "@/styles/globals.css";
 
 const manrope = Manrope({
@@ -39,13 +40,33 @@ export default function RootLayout({
 }) {
   const organizationSchema = generateOrganizationSchema();
   const websiteSchema = generateWebSiteSchema();
+  const gaId = process.env.NEXT_PUBLIC_GA_ID;
 
   return (
     <html lang="en" suppressHydrationWarning className={`${manrope.variable} ${dmSans.variable}`}>
       <head>
         <ThemeScript />
+        <link rel="alternate" type="application/rss+xml" title="Sasvale Insights" href="/feed.xml" />
       </head>
       <body className="min-h-screen flex flex-col bg-[var(--color-bg-primary)] text-[var(--color-text-primary)] font-sans antialiased selection:bg-[#C6A56B] selection:text-slate-950 transition-colors duration-200">
+        {gaId && (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
+              strategy="afterInteractive"
+            />
+            <Script id="google-analytics" strategy="afterInteractive">
+              {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '${gaId}', {
+                  page_path: window.location.pathname,
+                });
+              `}
+            </Script>
+          </>
+        )}
         <SmoothScrollProvider>
           {/* WCAG 2.2 AA Accessible Skip Link */}
           <a

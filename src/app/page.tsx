@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { constructMetadata } from "@/lib/seo/metadata";
+import { generateProfessionalServiceSchema, generateFAQSchema } from "@/lib/seo/jsonld";
+import { JsonLd } from "@/components/shared/JsonLd";
 import InteractivePortfolioHero from "@/components/home/InteractivePortfolioHero";
 import EnterpriseCredibilityMatrix from "@/components/home/EnterpriseCredibilityMatrix";
 import BuiltAiFirstCarousel from "@/components/home/BuiltAiFirstCarousel";
@@ -19,8 +21,40 @@ export const metadata: Metadata = constructMetadata({
 });
 
 export default function HomePage() {
+  const professionalServiceSchema = generateProfessionalServiceSchema();
+  const faqSchema = generateFAQSchema([
+    {
+      question: "What digital services and engineering capabilities does Sasvale provide?",
+      answer:
+        "Sasvale provides end-to-end digital capabilities across custom software engineering, enterprise web and headless CMS development, brand architecture, technical SEO, and AI workflow automation.",
+    },
+    {
+      question: "How does Sasvale approach custom software and web development?",
+      answer:
+        "We engineer scalable, secure software and digital platforms around real operational workflows. Every platform is optimized for sub-second Core Web Vitals, accessible WCAG 2.2 AA standards, and high conversion.",
+    },
+    {
+      question: "Does Sasvale develop AI systems and automation workflows?",
+      answer:
+        "Yes, our AI engineering practice builds practical task orchestration, Retrieval-Augmented Generation (RAG) knowledge interfaces, automated intake pipelines, and custom LLM API integrations.",
+    },
+    {
+      question: "What industries does Sasvale specialize in?",
+      answer:
+        "We serve high-growth enterprises and mid-market leaders across FinTech, Healthcare, Logistics, E-Commerce, Manufacturing, Real Estate, Energy, Hospitality, Agriculture, and Media.",
+    },
+    {
+      question: "How do client engagements and delivery timelines work at Sasvale?",
+      answer:
+        "We engage via dedicated engineering squads, fixed-scope platform delivery, and strategic advisory. Delivery follows a structured four-phase SDLC with transparent milestone tracking.",
+    },
+  ]);
+
   return (
     <div className="w-full bg-[var(--color-bg-primary)] min-h-screen text-[var(--color-text-primary)] transition-colors duration-200">
+      {/* Homepage Structured Data */}
+      <JsonLd data={[professionalServiceSchema, faqSchema]} />
+
       {/* 1. Interactive Portfolio Hero (Preserved Old Banner) */}
       <InteractivePortfolioHero />
 

@@ -7,7 +7,27 @@ interface ConstructMetadataProps {
   pathname?: string;
   image?: string;
   noIndex?: boolean;
+  type?: "website" | "article";
+  publishedTime?: string;
+  modifiedTime?: string;
+  authors?: string[];
+  section?: string;
+  keywords?: string[];
 }
+
+const DEFAULT_KEYWORDS = [
+  "custom software development",
+  "enterprise web engineering",
+  "AI automation studio",
+  "scalable digital platforms",
+  "technical SEO agency",
+  "headless ecommerce development",
+  "UI/UX product design",
+  "workflow automation",
+  "Next.js engineering",
+  "brand architecture",
+  "Sasvale",
+];
 
 export function constructMetadata({
   title,
@@ -15,19 +35,31 @@ export function constructMetadata({
   pathname = "/",
   image = "/og-image.png",
   noIndex = false,
+  type = "website",
+  publishedTime,
+  modifiedTime,
+  authors,
+  section,
+  keywords = DEFAULT_KEYWORDS,
 }: ConstructMetadataProps = {}): Metadata {
   const fullTitle = title
     ? (title.toLowerCase().includes(siteConfig.name.toLowerCase()) ? title : `${title} | ${siteConfig.name}`)
     : `${siteConfig.name} | ${siteConfig.tagline}`;
   const canonicalUrl = absoluteUrl(pathname);
+  const imageUrl = absoluteUrl(image);
 
   return {
     title: fullTitle,
     description,
+    keywords,
     metadataBase: new URL(siteConfig.url),
     alternates: {
       canonical: canonicalUrl,
     },
+    authors: authors ? authors.map((name) => ({ name })) : [{ name: siteConfig.name, url: siteConfig.url }],
+    creator: siteConfig.name,
+    publisher: siteConfig.legalName,
+    category: "technology",
     icons: {
       icon: [
         { url: "/favicon.svg", type: "image/svg+xml" },
@@ -40,9 +72,9 @@ export function constructMetadata({
     },
     manifest: "/site.webmanifest",
     appleWebApp: {
-      title: "SASVAL",
+      title: siteConfig.name,
       capable: true,
-      statusBarStyle: "default",
+      statusBarStyle: "black-translucent",
     },
     openGraph: {
       title: fullTitle,
@@ -50,13 +82,20 @@ export function constructMetadata({
       url: canonicalUrl,
       siteName: siteConfig.name,
       locale: "en_US",
-      type: "website",
+      type: type === "article" ? "article" : "website",
+      ...(type === "article" && {
+        publishedTime,
+        modifiedTime: modifiedTime || publishedTime,
+        authors: authors || [siteConfig.name],
+        section: section || "Technology",
+      }),
       images: [
         {
-          url: absoluteUrl(image),
+          url: imageUrl,
           width: 1200,
           height: 630,
           alt: fullTitle,
+          type: "image/png",
         },
       ],
     },
@@ -64,18 +103,29 @@ export function constructMetadata({
       card: "summary_large_image",
       title: fullTitle,
       description,
-      images: [absoluteUrl(image)],
+      images: [imageUrl],
       creator: "@sasvale",
+      site: "@sasvale",
     },
     robots: {
       index: !noIndex,
       follow: !noIndex,
+      nocache: false,
       googleBot: {
         index: !noIndex,
         follow: !noIndex,
         "max-video-preview": -1,
         "max-image-preview": "large",
         "max-snippet": -1,
+      },
+    },
+    verification: {
+      google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || undefined,
+      yandex: process.env.NEXT_PUBLIC_YANDEX_VERIFICATION || undefined,
+      other: {
+        ...(process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION
+          ? { "msvalidate.01": [process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION] }
+          : {}),
       },
     },
   };

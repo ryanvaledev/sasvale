@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { constructMetadata } from "@/lib/seo/metadata";
-import { generateBreadcrumbSchema } from "@/lib/seo/jsonld";
+import { generateBreadcrumbSchema, generateServiceSchema } from "@/lib/seo/jsonld";
 import { JsonLd } from "@/components/shared/JsonLd";
 
 const industriesData: Record<string, { title: string; overview: string; solutions: string[] }> = {
@@ -101,9 +101,17 @@ export default async function IndustryDetailPage({
     { name: industry.title, item: `/industries/${slug}` },
   ]);
 
+  const serviceSchema = generateServiceSchema({
+    name: `${industry.title} Digital Solutions`,
+    description: industry.overview,
+    url: `/industries/${slug}`,
+    serviceType: `${industry.title} Engineering`,
+    category: "Industry Solutions",
+  });
+
   return (
     <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-      <JsonLd data={breadcrumbs} />
+      <JsonLd data={[breadcrumbs, serviceSchema]} />
 
       <nav aria-label="Breadcrumb" className="mb-6 text-sm text-slate-400">
         <ol className="flex items-center space-x-2">

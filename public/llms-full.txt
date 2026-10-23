@@ -1,0 +1,195 @@
+# Sasvale — Full Knowledge Base & Technical Context
+
+> Comprehensive documentation for AI agents, retrieval-augmented generation (RAG) models, and automated context indexing.
+> Canonical URL: https://sasvale.com
+> Contact: hello@sasvale.com
+
+---
+
+## 1. Executive Summary & Brand Overview
+
+Sasvale (Sasvale LLC) is an independent digital studio and engineering consultancy. The firm designs, engineers, and scales high-performance digital platforms, bespoke software systems, and AI-powered workflow automations.
+
+### Core Philosophy: "Strategy. Automation. Scale."
+Sasvale operates under the conviction that digital solutions must be engineered around real operational problems rather than generic templates or fleeting technology hype. Every system delivered is built for:
+- Sub-second performance (Core Web Vitals LCP < 1.2s, CLS < 0.05, INP < 100ms)
+- Strict accessibility (WCAG 2.2 AA compliance across keyboard navigation and assistive devices)
+- Architectural maintainability (Strict TypeScript typings, component isolation, zero vendor lock-in)
+- Measurable business ROI (pipeline velocity, lead qualification, operational time savings)
+
+---
+
+## 2. Core Service Disciplines & Technical Deliverables
+
+### Discipline 01: Website & CMS Development
+- Canonical URL: https://sasvale.com/services/web-development
+- Tagline: "High-Performance Digital Flagships Engineered for Conversion"
+- Overview: Custom web applications, modern headless CMS implementations, and responsive digital platforms engineered for high performance, maintainability, and clean architecture.
+- Core Capabilities:
+  1. Custom Web Applications: Bespoke Next.js architectures using Server Components and streaming SSR.
+  2. Headless CMS Architecture: Decoupled content management (Sanity, Strapi, Contentful) enabling rapid editorial autonomy without risking frontend performance.
+  3. Performance Engineering: Image optimization via WebP/AVIF, responsive srcset pipelines, zero render-blocking styles, and edge CDN distribution.
+  4. Responsive Design & Micro-Interactions: Fluid typography scales, tactile physics, and smooth inertia scrolling via Lenis.
+
+### Discipline 02: Custom Software & Management Systems
+- Canonical URL: https://sasvale.com/services/custom-software
+- Tagline: "Internal Tools & Operational Infrastructure"
+- Overview: Tailored internal tools, web applications, and backend systems designed to streamline operational workflows, eliminate manual friction, and support business scale.
+- Core Capabilities:
+  1. Custom Internal Tooling: Purpose-built web apps that replace fragmented spreadsheets and manual data entry.
+  2. Database & Application Architecture: PostgreSQL, Redis caching, robust schema migrations, and RESTful/GraphQL APIs.
+  3. Operational Workflow Systems: Role-based access control (RBAC), audit logging, automated approval queues, and task dispatching.
+  4. Executive Business Dashboards: Real-time visualization of inventory, revenue, and customer telemetry.
+
+### Discipline 03: Brand Architecture & Identity Systems
+- Canonical URL: https://sasvale.com/services/branding
+- Tagline: "Digital Identity Engineered for Authority"
+- Overview: Comprehensive digital identity systems, design languages, and brand positioning engineered to convey credibility, authority, and institutional differentiation.
+- Core Capabilities:
+  1. Digital Brand Systems & Styleguides: Color mathematics, accessible contrast scales, and semantic design tokens.
+  2. Design Systems & Component Libraries: Standardized React/Tailwind UI component libraries ensuring visual consistency across products.
+  3. Visual Positioning: Premium dark-mode aesthetics, custom iconography, editorial typography, and spatial hierarchy.
+  4. Typography & Voice: Editorial typography rules that convey high trust and prestige in saturated markets.
+
+### Discipline 04: Search, Positioning & Organic Growth
+- Canonical URL: https://sasvale.com/services/seo-marketing
+- Tagline: "Technical Search Infrastructure Built for High-Intent Revenue"
+- Overview: Technical search infrastructure, crawl architecture, and structured data engineering built to establish sustained visibility for high-intent queries.
+- Core Capabilities:
+  1. Technical SEO & Architecture: Strict HTTP 308 redirect governance, flat URL hierarchies, clean canonical tag management.
+  2. Structured Data Engineering: Deep Schema.org JSON-LD integration (Organization, WebSite, ProfessionalService, FAQPage, Service, CreativeWork, BlogPosting, Breadcrumbs).
+  3. Crawl Efficiency & Site Speed: Server-rendered HTML delivery ensuring immediate indexation by Googlebot, Bingbot, and AI search engines.
+  4. High-Intent Content Strategy: Editorial cluster design targeting buyer intent rather than low-value vanity traffic.
+
+### Discipline 05: AI Integration & Automation
+- Canonical URL: https://sasvale.com/services/ai-integration
+- Tagline: "Practical AI Workflows Grounded in Measurable Utility"
+- Overview: Intelligent system workflows, API orchestration, and process automations designed to connect data silos, reduce manual overhead, and accelerate execution.
+- Core Capabilities:
+  1. Workflow & Systems Automation: Automated lead routing, contract review assistance, and multi-system webhook synchronization.
+  2. Retrieval-Augmented Generation (RAG): Custom document search and domain-specific knowledge bases using vector embeddings.
+  3. LLM API Scaffolding & Security: Rate-limiting, prompt guardrails, PII redaction, and deterministic structured JSON outputs.
+  4. Operational Productivity Agents: Internal AI tools that assist human teams with routine synthesis, ticket triaging, and content tagging.
+
+---
+
+## 3. Four-Phase Software Development Lifecycle (SDLC)
+
+1. Phase 01: Discovery & Architecture Review
+   - Business process mapping, operational pain point identification, technical requirements documentation, and architecture decision records (ADRs).
+2. Phase 02: Systems Design & Interactive Prototyping
+   - Component wireframing, WCAG 2.2 AA accessibility audit, responsive breakpoint definitions, and high-fidelity prototypes.
+3. Phase 03: Production Engineering & Quality Assurance
+   - Strict TypeScript development, unit/integration testing, Core Web Vitals profiling, cross-browser verification, and security hardening.
+4. Phase 04: Deployment, Monitoring & Iterative Scale
+   - Automated CI/CD deployments, uptime and performance telemetry, search indexing monitoring, and post-launch iterative enhancements.
+
+---
+
+## 4. Case Studies & Client Work
+
+1. Ethletia (Sportswear / Activewear Digital Commerce)
+   - URL: https://sasvale.com/work/ethletia
+   - Sector: Activewear & Digital Commerce
+   - Challenge: Balance high-fashion brand presentation with seamless mobile product discovery and rapid checkout.
+   - Solution: High-contrast digital storefront, structured visual catalog browsing, and a frictionless purchase pathway.
+
+2. Wind Deflectors (Automotive Parts E-Commerce)
+   - URL: https://sasvale.com/work/wind-deflectors
+   - Sector: Automotive Aftermarket E-Commerce
+   - Challenge: Eliminate fitment errors and customer return friction in a catalog with thousands of specific vehicle models.
+   - Solution: Precision vehicle make/model/year filtering, clear technical specification sheets, and instant compatibility verification.
+
+3. Education System (Institutional Learning & Academic Workflow)
+   - URL: https://sasvale.com/work/education-system
+   - Sector: Higher Education & EdTech
+   - Challenge: Replace disconnected legacy portals with a unified academic management interface for students, faculty, and administration.
+   - Solution: Unified course tracking, grade reporting, announcement streams, and role-based administrative controls.
+
+4. Crowdinvest (Real Estate Crowdfunding & Investor Portal)
+   - URL: https://sasvale.com/work/crowdinvest
+   - Sector: FinTech & PropTech
+   - Challenge: Build trust and compliance for retail and institutional real estate investors with complex financial disclosures.
+   - Solution: Investor identity verification, interactive property yield calculators, automated distribution tracking, and encrypted document storage.
+
+5. Bloom Beauty (Luxury Cosmetics & Beauty Retail)
+   - URL: https://sasvale.com/work/bloom-beauty
+   - Sector: Luxury Cosmetics
+   - Solution: Immersive visual presentation, ingredient transparency guides, and dynamic product bundle configurators.
+
+6. Artior (Artisanal Luxury Goods)
+   - URL: https://sasvale.com/work/artior
+   - Sector: High-End Luxury & Craftsmanship
+   - Solution: Editorial typography spreads, high-definition zoom galleries, and provenance storytelling.
+
+7. Bomeco (Sustainable Building Materials & Architecture)
+   - URL: https://sasvale.com/work/bomeco
+   - Sector: Green Architecture & Construction
+   - Solution: Technical environmental impact calculators, architectural sample ordering, and contractor spec libraries.
+
+8. TBS Salon (Premium Beauty & Salon Booking)
+   - URL: https://sasvale.com/work/tbs-salon
+   - Sector: Hospitality & Personal Care
+   - Solution: Real-time stylist calendar synchronization, multi-service booking workflows, and automated appointment confirmations.
+
+9. 21st Century (Insurance & Financial Advisory)
+   - URL: https://sasvale.com/work/21st-century
+   - Sector: Financial Risk & Insurance
+   - Solution: Institutional web architecture, risk assessment forms, and regulatory transparency disclosures.
+
+10. Cottread (Global Textile Supply Chain Platform)
+    - URL: https://sasvale.com/work/cottread
+    - Sector: B2B Industrial Supply Chain
+    - Solution: Multi-currency commodity quotation system, bulk order intake, and international freight tracking.
+
+11. Zenfia (Mental Wellness & Lifestyle Coaching)
+    - URL: https://sasvale.com/work/zenfia
+    - Sector: Digital Health & Wellness
+    - Solution: Daily wellness tracking, audio meditation streaming, and personalized progress visualization.
+
+12. Rassani POS (High-Throughput Retail Point of Sale)
+    - URL: https://sasvale.com/work/rassani-pos
+    - Sector: Retail Technology & Hardware Integration
+    - Solution: Sub-100ms barcode scanning response, offline-capable transaction queueing, and multi-store inventory synchronization.
+
+13. Roger Edwards Motors (Classic Mercedes-Benz Specialist)
+    - URL: https://sasvale.com/work/roger-edwards-motors
+    - Sector: Automotive Heritage & Restoration
+    - Solution: High-resolution historical restoration archives, parts inquiry intake, and collector vehicle showcases.
+
+14. Transworld (International Freight & Cargo Logistics)
+    - URL: https://sasvale.com/work/transworld
+    - Sector: Global Freight & Customs
+    - Solution: Real-time container tracking, automated customs clearance document libraries, and dynamic quotation tools.
+
+---
+
+## 5. Industry Vertical Solutions
+
+- FinTech: https://sasvale.com/industries/fintech
+- Healthcare: https://sasvale.com/industries/healthcare
+- Logistics: https://sasvale.com/industries/logistics
+- E-Commerce: https://sasvale.com/industries/ecommerce
+- Real Estate: https://sasvale.com/industries/real-estate
+- Industrial & Manufacturing: https://sasvale.com/industries/manufacturing
+- Energy & Utilities: https://sasvale.com/industries/energy
+- Hospitality & Travel: https://sasvale.com/industries/hospitality
+- Agriculture & AgTech: https://sasvale.com/industries/agriculture
+- Media & Entertainment: https://sasvale.com/industries/entertainment
+- Oil & Gas: https://sasvale.com/industries/oil-and-gas
+
+---
+
+## 6. Executive Questions & Answers (FAQ)
+
+Q: What makes Sasvale distinct from traditional digital agencies?
+A: Sasvale combines high-level business strategy with senior-level software engineering. We do not use generic WordPress themes or page builders. Everything is architected natively in modern TypeScript and Next.js, resulting in faster load times, superior search ranking potential, and systems that scale gracefully without technical debt.
+
+Q: How does Sasvale ensure fast web performance?
+A: We engineer for Core Web Vitals from the first line of code: server-rendered components, minimal client-side JavaScript, modern image encoding (WebP/AVIF), strict CSS architecture with Tailwind, and optimized font loading via next/font.
+
+Q: Can Sasvale integrate with existing enterprise backends?
+A: Yes. We regularly interface with custom REST and GraphQL APIs, enterprise ERPs (SAP, NetSuite), CRMs (HubSpot, Salesforce), payment providers (Stripe, Adyen), and legacy databases.
+
+Q: How can we start a project with Sasvale?
+A: Prospective clients can schedule an architectural discovery consultation at https://sasvale.com/contact or email our team at hello@sasvale.com.

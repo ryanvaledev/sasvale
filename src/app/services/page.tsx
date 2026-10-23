@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { constructMetadata } from "@/lib/seo/metadata";
+import { generateBreadcrumbSchema } from "@/lib/seo/jsonld";
+import { JsonLd } from "@/components/shared/JsonLd";
 import { PageHero } from "@/components/ui/PageHero";
 
 export const metadata: Metadata = constructMetadata({
@@ -91,8 +93,14 @@ const serviceDisciplines: ServiceDiscipline[] = [
 ];
 
 export default function ServicesPage() {
+  const breadcrumbs = generateBreadcrumbSchema([
+    { name: "Home", item: "/" },
+    { name: "Services", item: "/services" },
+  ]);
+
   return (
     <div className="w-full">
+      <JsonLd data={breadcrumbs} />
       {/* Shared Page Hero Pattern */}
       <PageHero
         eyebrow="Disciplines & Capabilities"
