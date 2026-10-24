@@ -4,7 +4,7 @@
 [![React](https://img.shields.io/badge/React-19.2.8-blue?logo=react)](https://react.dev/) 
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.9.3-3178C6?logo=typescript)](https://www.typescriptlang.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind-4.3.3-38B2AC?logo=tailwind-css)](https://tailwindcss.com/)
-[![License](https://img.shields.io/badge/license-Private-red)](#)
+[![License](https://img.shields.io/badge/license-Private-red)](#) 
 
 > **Sasvale** is an independent digital studio and engineering consultancy. We design, engineer, and scale high-performance digital platforms, bespoke software management systems, and AI-powered workflow automations for ambitious businesses.
 
