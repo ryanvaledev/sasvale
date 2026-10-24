@@ -5,9 +5,9 @@ import { JsonLd } from "@/components/shared/JsonLd";
 import PartnershipsInteractiveView from "@/components/partnerships/PartnershipsInteractiveView";
 
 export const metadata: Metadata = constructMetadata({
-  title: "Technology Partnerships & Development Services | SASVALE",
+  title: "Technology Partnerships, Dedicated Engineering & White-Label Development | SASVALE",
   description:
-    "Partner with SASVALE for websites, custom software, digital product development, dedicated engineering and ongoing technology improvements.",
+    "Partner with SASVALE for websites, custom software, digital product delivery, dedicated engineering squads, staff augmentation, and confidential white-label development under strict NDA.",
   pathname: "/partnerships",
 });
 

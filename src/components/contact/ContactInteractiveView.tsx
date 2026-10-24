@@ -6,60 +6,60 @@ import { ContactForm } from "@/components/contact/ContactForm";
 const STATUS_STRIP = [
   {
     num: "01",
-    label: "PROJECT FIT",
-    detail: "Technical product & systems work",
+    label: "Project Fit",
+    detail: "Digital platforms & software systems",
   },
   {
     num: "02",
-    label: "FIRST STEP",
-    detail: "Direct technical review",
+    label: "First Step",
+    detail: "Direct discovery & scoping call",
   },
   {
     num: "03",
-    label: "ENGAGEMENT",
-    detail: "Project or partnership",
+    label: "Engagement",
+    detail: "Dedicated pods or fixed milestones",
   },
   {
     num: "04",
-    label: "COMMUNICATION",
-    detail: "Direct access",
+    label: "Response",
+    detail: "Typically in under 24 hours",
   },
 ];
 
 const TECHNICAL_REVIEW_STAGES = [
   {
     step: "01",
-    title: "UNDERSTAND THE PROBLEM",
-    desc: "We examine the technical and operational context behind what you are building to identify core requirements and friction points.",
+    title: "Discovery & Context",
+    desc: "We examine your requirements, product vision, and operational constraints to understand your exact goals.",
   },
   {
     step: "02",
-    title: "ASSESS THE SYSTEM",
-    desc: "We analyze architecture dependencies, integration surfaces, and data models to determine the optimal engineering approach.",
+    title: "Architecture & Feasibility",
+    desc: "We analyze technical dependencies, integrations, and data models to define the optimal engineering path.",
   },
   {
     step: "03",
-    title: "DEFINE THE NEXT STEP",
-    desc: "We outline practical next steps—whether an architectural audit, dedicated pod deployment, or scoped product delivery.",
+    title: "Clear Roadmap & Next Steps",
+    desc: "We deliver a transparent roadmap with defined milestones, squad allocation, and fixed timelines.",
   },
 ];
 
 const DELIVERY_PRINCIPLES = [
   {
-    title: "DIRECT OWNERSHIP",
-    desc: "Full IP & repository rights transferred.",
+    title: "Full IP Ownership",
+    desc: "100% of code, design, and repositories transferred to you.",
   },
   {
-    title: "TECHNICAL CONTEXT",
-    desc: "Senior engineering from day one.",
+    title: "Senior Engineering",
+    desc: "Direct hands-on delivery by seasoned lead developers.",
   },
   {
-    title: "CLEAR SCOPE",
-    desc: "Explicit milestones without ambiguity.",
+    title: "Transparent Milestones",
+    desc: "Predictable cadences and explicit deliverables.",
   },
   {
-    title: "LONG-TERM THINKING",
-    desc: "Built for durability and compounding scale.",
+    title: "Built for Longevity",
+    desc: "Engineered for durability, security, and compounding scale.",
   },
 ];
 
@@ -131,8 +131,8 @@ export default function ContactInteractiveView() {
             {/* Eyebrow Pill */}
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[rgba(243,240,232,0.12)] bg-[rgba(243,240,232,0.02)] mb-6 backdrop-blur-xs">
               <span className="w-1.5 h-1.5 rounded-full bg-[#C6A56B] animate-pulse" aria-hidden="true" />
-              <span className="text-[10px] sm:text-[11px] font-semibold tracking-[0.2em] uppercase text-[#C6A56B]">
-                INQUIRIES &amp; COLLABORATION // DIRECT TECHNICAL ACCESS
+              <span className="text-[11px] font-medium tracking-wider uppercase text-[#C6A56B]">
+                Start a Project · Direct Senior Access
               </span>
             </div>
 
@@ -177,25 +177,18 @@ export default function ContactInteractiveView() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
             {/* Left 60% (7 cols): Project Intake Form */}
             <div className="lg:col-span-7">
-              {/* Header & Flow Indicator with strengthened visual hierarchy & spacing */}
-              <div className="mb-8 sm:mb-10">
-                <span className="text-xs font-mono font-semibold uppercase tracking-[0.24em] text-[#C6A56B] block mb-2.5">
-                  PROJECT INTAKE
-                </span>
-                <h2 className="font-display text-2xl sm:text-3xl lg:text-[34px] font-medium text-[#F3F0E8] tracking-[-0.025em] leading-[1.18] mb-3.5">
-                  Initiate technical scoping.
-                </h2>
-                
-                {/* Architectural Intake Flow */}
-                <div className="inline-flex items-center gap-2 sm:gap-2.5 px-3 py-1.5 rounded-lg border border-white/[0.06] bg-white/[0.02] text-[11px] font-mono text-[#A8A49B]">
-                  <span className="text-[#C6A56B] font-medium">INQUIRY</span>
-                  <span className="text-white/20">→</span>
-                  <span>CONTEXT</span>
-                  <span className="text-white/20">→</span>
-                  <span>SYSTEM</span>
-                  <span className="text-white/20">→</span>
-                  <span>NEXT STEP</span>
+              {/* Header with human, inviting agency messaging */}
+              <div className="mb-8">
+                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#C6A56B]/10 border border-[#C6A56B]/25 text-[#C6A56B] text-xs font-medium tracking-wide uppercase mb-3">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#C6A56B] animate-pulse" />
+                  Direct Project Scoping
                 </div>
+                <h2 className="font-display text-2xl sm:text-3xl lg:text-[36px] font-semibold text-[#F3F0E8] tracking-tight leading-tight mb-3">
+                  Let’s start a conversation.
+                </h2>
+                <p className="text-sm sm:text-base text-[#A8A49B] leading-relaxed max-w-xl">
+                  Have an ambitious project, need a dedicated engineering partner, or want to audit an existing platform? Share your goals below and we’ll get back to you within 24 hours.
+                </p>
               </div>
 
               <ContactForm />
@@ -204,7 +197,7 @@ export default function ContactInteractiveView() {
             {/* Right 40% (5 cols): Direct Communication, Technical Review, Principles */}
             <div className="lg:col-span-5 space-y-6">
               {/* Panel 1: Direct Communication Channels (Interactive) */}
-              <div className="sasvale-card p-7 sm:p-8 relative overflow-hidden border-white/[0.1] bg-[#0c0d10]">
+              <div className="sasvale-card p-7 sm:p-8 relative overflow-hidden">
                 <div className="flex items-center justify-between mb-4">
                   <span className="text-[11px] font-mono font-semibold tracking-[0.2em] uppercase text-[#C6A56B]">
                     DIRECT COMMUNICATION
@@ -286,7 +279,7 @@ export default function ContactInteractiveView() {
               </div>
 
               {/* Panel 2: Direct Technical Review (Informational) */}
-              <div className="sasvale-card p-6 sm:p-7 relative overflow-hidden border-white/[0.07] bg-[#0c0d10]/60">
+              <div className="sasvale-card p-6 sm:p-7 relative overflow-hidden">
                 <span className="text-[11px] font-mono font-semibold tracking-[0.2em] uppercase text-[#C6A56B] block mb-2.5">
                   DIRECT TECHNICAL REVIEW
                 </span>
@@ -320,7 +313,7 @@ export default function ContactInteractiveView() {
               </div>
 
               {/* Panel 3: Delivery Principles (Compact) */}
-              <div className="sasvale-card p-5 sm:p-6 relative overflow-hidden border-white/[0.05] bg-white/[0.015]">
+              <div className="sasvale-card p-5 sm:p-6 relative overflow-hidden">
                 <span className="text-[11px] font-mono font-semibold tracking-[0.2em] uppercase text-[#C6A56B] block mb-2.5">
                   DELIVERY PRINCIPLES
                 </span>

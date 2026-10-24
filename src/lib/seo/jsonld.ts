@@ -38,6 +38,8 @@ export function generateOrganizationSchema() {
       "Technical SEO & Growth Strategy",
       "Headless E-Commerce Architecture",
       "Brand Identity & Digital Design",
+      "White-Label Software Development",
+      "Dedicated Engineering & Staff Augmentation",
     ],
   };
 }

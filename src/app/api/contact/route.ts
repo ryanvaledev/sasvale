@@ -5,9 +5,11 @@ import { Resend } from "resend";
 const contactFormSchema = z.object({
   name: z.string().min(1, "Please provide your name").max(150),
   email: z.string().email("Please provide a valid email address (e.g. alex@company.com)"),
+  company: z.string().max(150).optional(),
   service: z.string().optional(),
-  message: z.string().min(2, "Please write at least a few words describing your project or inquiry").max(5000),
+  timeline: z.string().optional(),
   budget: z.string().optional(),
+  message: z.string().min(2, "Please write at least a few words describing your project or inquiry").max(5000),
   website_trap: z.string().optional(),
 });
 
@@ -30,9 +32,11 @@ export async function POST(request: Request) {
     const body = {
       name: typeof rawBody.name === "string" ? rawBody.name.trim() : "",
       email: typeof rawBody.email === "string" ? rawBody.email.trim() : "",
+      company: typeof rawBody.company === "string" ? rawBody.company.trim() : undefined,
       service: typeof rawBody.service === "string" ? rawBody.service.trim() : "",
-      message: typeof rawBody.message === "string" ? rawBody.message.trim() : "",
+      timeline: typeof rawBody.timeline === "string" ? rawBody.timeline.trim() : undefined,
       budget: typeof rawBody.budget === "string" ? rawBody.budget.trim() : undefined,
+      message: typeof rawBody.message === "string" ? rawBody.message.trim() : "",
       website_trap: typeof rawBody.website_trap === "string" ? rawBody.website_trap.trim() : "",
     };
 
@@ -61,14 +65,16 @@ export async function POST(request: Request) {
       );
     }
 
-    const { name, email, service, message, budget } = parseResult.data;
+    const { name, email, company, service, timeline, budget, message } = parseResult.data;
     const recipientEmail = process.env.CONTACT_INBOX_EMAIL || DEFAULT_INBOX;
     const resendApiKey = process.env.RESEND_API_KEY;
 
     console.info("[Contact Form Submission Received]", {
       name,
       email,
+      company,
       service,
+      timeline,
       budget,
       recipient: recipientEmail,
       timestamp: new Date().toISOString(),
@@ -112,10 +118,24 @@ export async function POST(request: Request) {
                 <div class="value"><a href="mailto:${escapeHtml(email)}" style="color: #C6A56B; text-decoration: none;">${escapeHtml(email)}</a></div>
               </div>
 
+              ${company ? `
               <div class="field">
-                <div class="label">Discipline / Service Area</div>
+                <div class="label">Company / Organization</div>
+                <div class="value">${escapeHtml(company)}</div>
+              </div>
+              ` : ""}
+
+              <div class="field">
+                <div class="label">Service Interest</div>
                 <div class="value">${escapeHtml(service || "Not specified")}</div>
               </div>
+
+              ${timeline ? `
+              <div class="field">
+                <div class="label">Target Timeline</div>
+                <div class="value">${escapeHtml(timeline)}</div>
+              </div>
+              ` : ""}
 
               ${budget ? `
               <div class="field">
@@ -125,13 +145,13 @@ export async function POST(request: Request) {
               ` : ""}
 
               <div class="field">
-                <div class="label">Project Scope &amp; Details</div>
+                <div class="label">Project Details</div>
                 <div class="message-box">${escapeHtml(message)}</div>
               </div>
 
               <div class="footer">
-                // Received at: ${new Date().toUTCString()}<br/>
-                // Target: ${escapeHtml(recipientEmail)}
+                // Received: ${new Date().toUTCString()}<br/>
+                // Forwarded to: ${escapeHtml(recipientEmail)}
               </div>
             </div>
           </body>
@@ -142,8 +162,8 @@ export async function POST(request: Request) {
         from: process.env.RESEND_FROM_EMAIL || "Sasvale Inquiries <onboarding@resend.dev>",
         to: recipientEmail,
         replyTo: email,
-        subject: `[New Inquiry] ${name} — ${service || "Project Scoping"}`,
-        text: `New Inquiry from ${name} (${email})\nService: ${service || "Not specified"}\nBudget: ${budget || "Not specified"}\n\nMessage:\n${message}`,
+        subject: `[New Inquiry] ${name}${company ? ` (${company})` : ""} — ${service || "Project Scoping"}`,
+        text: `New Inquiry from ${name} (${email})${company ? `\nCompany: ${company}` : ""}\nService: ${service || "Not specified"}${timeline ? `\nTimeline: ${timeline}` : ""}${budget ? `\nBudget: ${budget}` : ""}\n\nMessage:\n${message}`,
         html: htmlContent,
       });
 

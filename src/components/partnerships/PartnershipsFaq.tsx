@@ -29,6 +29,12 @@ const FAQS: PartnershipFaqItem[] = [
       "Yes. Under our Dedicated Engineering model, senior engineers integrate seamlessly into your existing Git workflows, communication channels, and sprint cycles, helping your internal team accelerate delivery without the friction of hiring or managing external subcontractors.",
   },
   {
+    id: "faq-white-label",
+    question: "Do you offer white-label development for agencies and design studios?",
+    answer:
+      "Yes. We frequently act as the confidential white-label engineering partner for creative agencies, marketing studios, and consultancies. We work under strict mutual NDAs, adhering to your brand guidelines, Git repos, and project workflows without client-facing attribution.",
+  },
+  {
     id: "faq-4",
     question: "How are project scope and pricing determined?",
     answer:

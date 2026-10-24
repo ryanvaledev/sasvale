@@ -26,6 +26,7 @@ const MODELS: EngagementModelData[] = [
       "Business websites & digital storefronts",
       "High-conversion e-commerce platforms",
       "Custom software & internal systems",
+      "White-label agency delivery & design partner builds",
       "New web applications & client portals",
     ],
     deliverables: [
@@ -47,6 +48,7 @@ const MODELS: EngagementModelData[] = [
     headline: "Extend your capabilities without building a team from scratch.",
     idealFor: [
       "Companies with ongoing engineering needs",
+      "IT staff augmentation & dedicated engineering pods",
       "Existing product teams needing senior specialists",
       "Businesses delivering complex software platforms",
       "Scale-ups requiring continuous sprint velocity",

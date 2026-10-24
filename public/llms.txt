@@ -26,7 +26,7 @@ Sasvale (Sasvale LLC) plans, designs, builds, and maintains digital platforms an
 
 - [Strategic Capabilities](https://sasvale.com/capabilities): Overview of engineering disciplines across web development, custom software, workflow automation, e-commerce, and digital experience design.
 - [Development Approach & SDLC](https://sasvale.com/approach): Four-phase software development lifecycle covering Discovery & Architecture, System Design & Prototyping, Production Engineering, and Continuous Optimization.
-- [Partnership & Engagement Models](https://sasvale.com/partnerships): Structured engagement frameworks including dedicated engineering squads, fixed-scope platform delivery, and long-term technical advisory.
+- [Partnership & Engagement Models](https://sasvale.com/partnerships): Structured engagement frameworks including dedicated engineering squads, fixed-scope platform delivery, confidential white-label development for agencies, and technical staff augmentation.
 - [About the Studio](https://sasvale.com/about): Background, founding philosophy, architectural values, and studio governance.
 - [Contact & Consultation](https://sasvale.com/contact): Direct intake for enterprise project discussions, architectural reviews, and technical scoping.
 
