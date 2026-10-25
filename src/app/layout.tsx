@@ -50,6 +50,7 @@ export default function RootLayout({
       className={`${manrope.variable} ${dmSans.variable}`}
     >
       <head>
+        <meta name="p:domain_verify" content="31b53ffedd46b0853a195ddeb5ccf4d5"/>
         {/* Google Tag Manager */}
         <script
           id="google-tag-manager"
