@@ -28,7 +28,7 @@ import { AboutContactCta } from "./AboutContactCta";
  */
 export default function AboutInteractiveView() {
   return (
-    <article className="relative w-full min-h-screen bg-[#070707] text-[#F5F3ED] overflow-hidden font-sans selection:bg-[#C6A56B] selection:text-[#070707]">
+    <article className="relative w-full min-h-screen bg-[#070707] light:bg-[#F3F0E8] text-[#F5F3ED] light:text-[#0B0B0B] transition-colors duration-300 overflow-hidden font-sans selection:bg-[#C6A56B] selection:text-[#070707]">
       {/* SECTION 01: Premium Editorial Hero */}
       <AboutHero />
 
@@ -50,7 +50,7 @@ export default function AboutInteractiveView() {
       {/* SECTION 07: How We Think and Work */}
       <AboutMindset />
 
-      {/* SECTION 08: Signature Brand Statement (Warm Off-White Contrast) */}
+      {/* SECTION 08: Signature Brand Statement */}
       <AboutBrandStatement />
 
       {/* SECTION 09: Final Contact CTA */}
