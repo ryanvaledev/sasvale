@@ -16,9 +16,9 @@ const NAV_LINKS = [
 ];
 
 const SOCIAL_LINKS = [
-  { label: "LINKEDIN", href: "https://www.linkedin.com/company/sasvale/" },
+  { label: "LINKEDIN", href: "https://www.linkedin.com/company/sasvaleltd/" },
   { label: "INSTAGRAM", href: "https://www.instagram.com/sasvaleltd/" },
-  { label: "FACEBOOK", href: "https://www.facebook.com/SASValeglobal/" },
+  { label: "FACEBOOK", href: "https://www.facebook.com/sasvaleltd/" },
 ];
 
 const LEGAL_LINKS = [
@@ -91,7 +91,7 @@ export function SiteFooter() {
         />
 
         <div className="max-w-7xl px-5 sm:px-6 xl:px-8 mx-auto leading-relaxed relative z-10">
-          
+
           {/* Top Giant Sliced Logo - Solid Top Half */}
           <div
             className="relative border-b md:border-b-2 overflow-hidden max-w-full"
@@ -121,7 +121,7 @@ export function SiteFooter() {
 
           {/* Responsive Information & Editorial Navigation Grid */}
           <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-12 md:gap-8 mb-12 md:mb-16">
-            
+
             {/* Column 1: Brand Statement & Contact (Editorial Positioning) */}
             <div className="w-full md:max-w-[440px] lg:max-w-[490px] text-left">
               {/* Small Editorial Metadata Label */}
@@ -159,7 +159,7 @@ export function SiteFooter() {
 
             {/* Column 2 & 3: Editorial Navigation & Social Groups */}
             <div className="w-full md:w-auto flex flex-col sm:flex-row gap-10 sm:gap-14 md:gap-16 lg:gap-20 md:ml-auto">
-              
+
               {/* Group A: EXPLORE (Numbered Editorial Navigation) */}
               <nav aria-label="Footer Explore Navigation" className="flex flex-col">
                 <span className="text-[10px] sm:text-[11px] font-mono font-semibold uppercase tracking-[0.24em] text-[#C6A56B]/80 mb-4 select-none">
@@ -272,11 +272,10 @@ export function SiteFooter() {
       {/* Floating Interactive Back to Top Button with Progress Circle & Hover Animation */}
       <button
         onClick={scrollToTop}
-        className={`fixed bottom-20 right-4 sm:bottom-6 sm:right-5 md:bottom-6 md:right-6 xl:right-8 z-40 group transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] rounded-full p-0 outline-none flex items-center justify-center shrink-0 aspect-square ${
-          showBackToTop
+        className={`fixed bottom-20 right-4 sm:bottom-6 sm:right-5 md:bottom-6 md:right-6 xl:right-8 z-40 group transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] rounded-full p-0 outline-none flex items-center justify-center shrink-0 aspect-square ${showBackToTop
             ? "opacity-100 translate-y-0 scale-100 pointer-events-auto"
             : "opacity-0 translate-y-12 scale-90 pointer-events-none"
-        }`}
+          }`}
         style={{
           width: "50px",
           height: "50px",
